@@ -7,7 +7,7 @@
 // Dependencies
 // =============================================================
 var path = require("path");
-
+var db = require("../models")
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -16,17 +16,21 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
+    db.Users.findAll({}).then(function(data){
+      res.render('index', { Users: data });
+    });
   });
 
   // cms route loads cms.html
-  app.get("/cms", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/cms.html"));
+  app.post("/api/breweries/", function(req, res) {
+    db.Users.create(req.body).then(function(data) {
+      res.json(data);
+    });
   });
 
   // blog route loads blog.html
   app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
+    
   });
 
   // authors route loads author-manager.html
