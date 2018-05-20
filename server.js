@@ -2,10 +2,13 @@
 var express = require('express');
 var db = require('./models');
 var app = express();
+var exphbs = require('express-handlebars');
 // DEPENDENCIES HANDLE AUTHENTICATION
 var passport = require('passport')
 var session = require('express-session')
 var bodyParser = require('body-parser');
+var authRoute = require('./routes/auth.js')(app); 
+
 var env = require('dotenv').load(); 
 
 // CREATE SERVER
@@ -23,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session()); //persists login sessions
 
 
-var exphbs = require('express-handlebars');
+//HANDLEBARS
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
