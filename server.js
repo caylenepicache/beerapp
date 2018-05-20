@@ -1,8 +1,8 @@
 // DEPENDENCIES
 var express = require('express');
 var bodyParser = require('body-parser');
-
 var db = require('./models');
+``
 
 // CREATE SERVER
 var app = express();
@@ -19,6 +19,12 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // ROUTING
+app.get('/', function(req, res) {
+ 
+  res.send('Welcome to Passport with Sequelize');
+
+});
+
 
 require('./routes/html-routes')(app);
 // app.use(require('./routes/api'))

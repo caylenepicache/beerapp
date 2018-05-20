@@ -9,19 +9,8 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
     //Associating breweries with beers and addresses 
-    Brewery.associate = function(models){
-        Brewery.hasMany(models.Beer, {
-            foreignKey:{
-                allowNull: false
-            }
-        });
-        Brewery.hasMany(models.Address, {
-            foreignKey:{
-                allowNull: false
-            }
-        });
-        
 
-    }
+
+    
     return Brewery;
 }
