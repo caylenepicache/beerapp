@@ -30,11 +30,9 @@ app.use(passport.session()); //persists login sessions
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
- 
- //  TEST**********************
 
-//
-
+//LOAD PASSPORT STRATEGIES
+require('./config/passport/passport.js')(passport,models.user)
 
 // ROUTING
 
