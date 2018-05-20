@@ -1,11 +1,15 @@
 // DEPENDENCIES
 var express = require('express');
-var bodyParser = require('body-parser');
 var db = require('./models');
-``
+var app = express();
+// DEPENDENCIES HANDLE AUTHENTICATION
+var passport = require('passport')
+var session = require('express-session')
+var bodyParser = require('body-parser');
+var env = require('dotenv').load(); 
 
 // CREATE SERVER
-var app = express();
+
 var PORT = process.env.PORT || 8080;
 
 // MIDDLEWARE
@@ -13,18 +17,23 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+//EXPRESS AND PASSPORT SESSION 
+app.use(session({secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(passport.initialize()); 
+app.use(passport.session()); //persists login sessions
+
 
 var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// ROUTING
-app.get('/', function(req, res) {
  
-  res.send('Welcome to Passport with Sequelize');
+ //  TEST**********************
 
-});
+//
 
+
+// ROUTING
 
 require('./routes/html-routes')(app);
 // app.use(require('./routes/api'))
