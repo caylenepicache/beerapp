@@ -3,13 +3,16 @@ var express = require('express');
 var db = require('./models');
 var app = express();
 var exphbs = require('express-handlebars');
-// DEPENDENCIES HANDLE AUTHENTICATION
+// DEPENDENCIES HANDLING AUTHENTICATION
 var passport = require('passport')
 var session = require('express-session')
 var bodyParser = require('body-parser');
-var authRoute = require('./routes/auth.js')(app); 
+var models = require("./models");
+//add passport as a parameter
+var authRoute = require('./routes/auth.js')(app, passport); 
 
 var env = require('dotenv').load(); 
+var exphbs = require('express-handlebars')
 
 // CREATE SERVER
 
@@ -17,7 +20,7 @@ var PORT = process.env.PORT || 8080;
 
 // MIDDLEWARE
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
 //EXPRESS AND PASSPORT SESSION 
@@ -27,12 +30,12 @@ app.use(passport.session()); //persists login sessions
 
 
 //HANDLEBARS
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({ defaultLayout: 'main', extname: 'handlebars' }));
 app.set('view engine', 'handlebars');
-
+app.set('views', './views')
 
 //LOAD PASSPORT STRATEGIES
-require('./config/passport/passport.js')(passport,models.user)
+require('./config/passport/passport.js')(passport, models.user)
 
 // ROUTING
 
