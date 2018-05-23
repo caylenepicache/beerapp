@@ -6,7 +6,14 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
-        }
+        },
+        rbBrewId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+    }
     });
     //Associating breweries with beers and addresses 
 

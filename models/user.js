@@ -1,47 +1,44 @@
 'use strict'
-module.exports = function(sequelize, DataTypes) {
-    var User = sequelize.define("User", {
+module.exports = function(sequelize, Sequelize) {
+    var User = sequelize.define("user", {
         id: {
             autoIncrement: true, 
             primaryKey: true, 
-            type: DataTypes.INTEGER
+            type: Sequelize.INTEGER
         },
         firstName: {
-            type: DataTypes.STRING,
-            allowNull: false,
+            type: Sequelize.STRING,
+            allowNull: true,
             validate: {
                 len: [1,15]
             }
         },
         lastName: {
-            type: DataTypes.STRING,
-            allowNull: false,
+            type: Sequelize.STRING,
+            allowNull: true,
             validate: {
                 len: [1,15]
             }
         },
         username: {
-            type: DataTypes.TEXT
+            type: Sequelize.TEXT
         },
         email: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             validate: {
                 isEmail: true
             }
         },
         password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1,15]
-            }
+            type: Sequelize.STRING,
+            allowNull: true
         },
         last_login: {
-            type: DataTypes.DATE
+            type: Sequelize.DATE
         },
  
         status: {
-            type: DataTypes.ENUM('active', 'inactive'),
+            type: Sequelize.ENUM('active', 'inactive'),
             defaultValue: 'active'
         }
         
