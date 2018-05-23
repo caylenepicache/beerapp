@@ -16,14 +16,14 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/", function(req, res) {
-    db.Users.findAll({}).then(function(data){
-      res.render('index', { Users: data });
+    db.User.findAll({}).then(function(data){
+      res.render('index', { User: data });
     });
   });
 
   // cms route loads cms.html
   app.post("/api/breweries/", function(req, res) {
-    db.Users.create(req.body).then(function(data) {
+    db.User.create(req.body).then(function(data) {
       res.json(data);
     });
   });

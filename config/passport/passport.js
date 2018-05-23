@@ -16,7 +16,7 @@ module.exports = function (passport, user) {
             //if successful, instance of model returned
             if (user) {
                 //sequelize getter function is used to get user object from instance
-                done(null.user.get());
+                done(null,user.get());
             }
             else {
                 done(user.errors, null);
