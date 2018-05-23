@@ -17,7 +17,7 @@ module.exports = function(app) {
   // index route loads view.html
   app.get("/", function(req, res) {
     db.User.findAll({}).then(function(data){
-      res.render('index', { User: data });
+      res.render('main', { User: data });
     });
   });
 
