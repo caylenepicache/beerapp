@@ -8,17 +8,11 @@ module.exports = function(sequelize, Sequelize) {
         },
         firstName: {
             type: Sequelize.STRING,
-            allowNull: true,
-            validate: {
-                len: [1,15]
-            }
+            allowNull: true,     
         },
         lastName: {
             type: Sequelize.STRING,
             allowNull: true,
-            validate: {
-                len: [1,15]
-            }
         },
         username: {
             type: Sequelize.TEXT
@@ -31,7 +25,7 @@ module.exports = function(sequelize, Sequelize) {
         },
         password: {
             type: Sequelize.STRING,
-            allowNull: true
+            allowNull: false
         },
         last_login: {
             type: Sequelize.DATE
