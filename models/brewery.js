@@ -16,6 +16,16 @@ module.exports = function(sequelize, DataTypes) {
             }
 
         },
+        rbBrewId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+    }
+
+
+        },
         address: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -39,6 +49,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
         }
+
     });
     //Associating breweries with beers and addresses 
 

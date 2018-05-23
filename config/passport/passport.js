@@ -6,20 +6,20 @@ module.exports = function (passport, user) {
     var LocalStrategy = require('passport-local').Strategy;
     //Passport uses serialize to save user id to session to manage retrieving user details when needed
     //serialize
-    passport.serializeUser(function(user, done){
-        done(null, user.id); 
+    passport.serializeUser(function (user, done) {
+        done(null, user.id);
     })
     //deserialize user
-    passport.deserializeUser(function(id, done){
+    passport.deserializeUser(function (id, done) {
         //using sequelize findByID promise to get user 
-        User.findById(id).then(function(user){
+        User.findById(id).then(function (user) {
             //if successful, instance of model returned
-            if(user){
+            if (user) {
                 //sequelize getter function is used to get user object from instance
-                done(null.user.get());
+                done(null,user.get());
             }
-            else{
-                done(user.errors,null); 
+            else {
+                done(user.errors, null);
             }
         });
     });
@@ -70,5 +70,51 @@ module.exports = function (passport, user) {
                 }
             });
         }
+
+
     ));
+    //LOCAL SIGNIN
+    passport.use('local-signin', new LocalStrategy(
+        {
+            //local strategy uses username and password. Overriding with email 
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true //allows passing back entire request to callback
+        },
+        function (req, email, password, done) {
+            var User = user;
+            //creating a validation function for the password
+            var isValidPassword = function (userpass, password) {
+                return bCrypt.compareSync(password, userpass);
+            }
+            //searching database if email account matches a registered user
+            User.findOne({
+                where: {
+                    email: email
+                }
+            }).then(function (user) {
+                //if no user exists return message with string
+                if (!user) {
+                    return done(null, false, {
+                        message: 'Email does not exist'
+                    });
+                }
+                //if user password does not match password then return message with string
+                //bcrypt comparison method is used since password is stored with bcrypt
+                if (!isValidPassword(user.password, password)) {
+                    return done(null, false, {
+                        message: 'Incorrect password.'
+                    });
+                }
+                var userinfo = user.get();
+                return done(null, userinfo);
+            }).catch(function (err) {
+                console.log("Error:", err);
+                return done(null, false, {
+                    message: 'Something went wrong with your Signin'
+                });
+            });
+
+        }
+    ))
 }
