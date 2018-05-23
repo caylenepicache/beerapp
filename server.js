@@ -19,10 +19,8 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // ROUTING
-
 require('./routes/html-routes')(app);
-// app.use(require('./routes/api'))
-// app.use(routes);
+
 
 // RUN SERVER
 db.sequelize.sync({force: true}).then(function() {
