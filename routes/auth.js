@@ -23,7 +23,9 @@ module.exports = function (app, passport) {
 
     //ROUTE FOR POSTING DATA. USING PASSPORT METHOD AS A PARAMETER
     app.post('/signup', passport.authenticate('local-signup', {
+        //On sign-in redirect to the dashboard handlebars page
         successRedirect: '/dashboard',
+        //On failure to sign-in redirect to sign-up page 
         failureRedirect: '/signup'
     }));
 

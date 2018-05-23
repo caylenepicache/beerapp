@@ -1,21 +1,30 @@
 'use strict'
-module.exports = function(sequelize, Sequelize) {
+module.exports = function (sequelize, Sequelize) {
     var User = sequelize.define("user", {
         id: {
-            autoIncrement: true, 
-            primaryKey: true, 
+            autoIncrement: true,
+            primaryKey: true,
             type: Sequelize.INTEGER
         },
         firstName: {
             type: Sequelize.STRING,
-            allowNull: true,     
+            allowNull: false,
+            validate: {
+                len: [1,18]
+            }
         },
         lastName: {
             type: Sequelize.STRING,
-            allowNull: true,
+            allowNull: false,
+            validate: {
+                len: [1,18]
+            }
         },
         username: {
-            type: Sequelize.TEXT
+            type: Sequelize.TEXT,
+            validate: {
+                len: [1,18]
+            }
         },
         email: {
             type: Sequelize.STRING,
@@ -30,12 +39,12 @@ module.exports = function(sequelize, Sequelize) {
         last_login: {
             type: Sequelize.DATE
         },
- 
+
         status: {
             type: Sequelize.ENUM('active', 'inactive'),
             defaultValue: 'active'
         }
-        
+
     });
     return User;
 }

@@ -54,8 +54,8 @@ module.exports = function (passport, user) {
                         {
                             email: email,
                             password: userPassword,
-                            firstname: req.body.firstname,
-                            lastname: req.body.lastname
+                            firstName: req.body.firstname,
+                            lastName: req.body.lastname
                         };
                     //User.create() is sequelize method for adding entries to database
                     //objects are req.body objects which are inputs received from signup form
