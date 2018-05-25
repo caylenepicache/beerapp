@@ -8,6 +8,8 @@ module.exports = function (passport, user) {
     //serialize
     passport.serializeUser(function (user, done) {
         done(null, user.id);
+        
+        //console.log(session.passport.user);
     })
     //deserialize user
     passport.deserializeUser(function (id, done) {
@@ -42,8 +44,9 @@ module.exports = function (passport, user) {
                     email: email
                 }
             }).then(function (user) {
-                //If user already exists message, the email has been used
+                //If user already exists message, the email has been used and return
                 if (user) {
+                    console.log("The email is already taken");
                     return done(null, false, {
                         message: 'That email is already taken'
                     });
@@ -57,7 +60,7 @@ module.exports = function (passport, user) {
                             firstName: req.body.firstname,
                             lastName: req.body.lastname
                         };
-                    //User.create() is sequelize method for adding entries to database
+                    //User.create()= sequelize method for adding entries to database
                     //objects are req.body objects which are inputs received from signup form
                     User.create(data).then(function (newUser, created) {
                         if (!newUser) {
@@ -107,7 +110,9 @@ module.exports = function (passport, user) {
                     });
                 }
                 var userinfo = user.get();
+                console.log("####################################################################################################################################################################################################this is the userinfo" + user.id);
                 return done(null, userinfo);
+    
             }).catch(function (err) {
                 console.log("Error:", err);
                 return done(null, false, {

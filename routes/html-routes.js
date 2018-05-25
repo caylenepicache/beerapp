@@ -21,6 +21,7 @@ module.exports = function(app) {
     });
   });
 
+
   // cms route loads cms.html
   app.post("/api/breweries/", function(req, res) {
     db.User.create(req.body).then(function(data) {
@@ -30,6 +31,7 @@ module.exports = function(app) {
 
   // blog route loads blog.html
   app.get("/blog", function(req, res) {
+  
     
   });
 
@@ -38,4 +40,6 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/author-manager.html"));
   });
 
+
 };
+
