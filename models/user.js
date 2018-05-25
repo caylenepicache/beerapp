@@ -1,10 +1,10 @@
 'use strict'
 module.exports = function(sequelize, Sequelize) {
-    var User = sequelize.define("user", {
+    var User = sequelize.define("User", {
         id: {
+            type: Sequelize.INTEGER,
             autoIncrement: true, 
-            primaryKey: true, 
-            type: Sequelize.INTEGER
+            primaryKey: true
         },
         firstName: {
             type: Sequelize.STRING,
