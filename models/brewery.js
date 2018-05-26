@@ -1,14 +1,15 @@
-module.exports = function(sequelize, DataTypes) {
+'use strict'
+module.exports = function(sequelize, Sequelize) {
     var Brewery = sequelize.define("Brewery", {
         breweryName: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: true,
             validate: {
                 len: [1]
             }
         },
         rbBrewId: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
             validate: {
                 len: [1]
@@ -16,7 +17,10 @@ module.exports = function(sequelize, DataTypes) {
     }
     });
     //Associating breweries with beers and addresses 
-
+    Brewery.associate = function(models) {
+        Brewery.belongsToMany(models.User, {through: 'UserBrewery'});
+       Brewery.belongsToMany(models.Address, {through: 'AddressBrewery'});
+        }
 
     
     return Brewery;
