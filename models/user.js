@@ -49,7 +49,8 @@ module.exports = function (sequelize, Sequelize) {
 
     User.associate = function(models) {
         User.belongsToMany(models.Brewery, {
-            through: wishList
+            through: wishList,
+            
         });
     }
 
