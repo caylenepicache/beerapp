@@ -53,7 +53,7 @@ module.exports = function(sequelize, Sequelize) {
 
     Brewery.associate = function(models) {
         Brewery.belongsToMany(models.user, {through: 'UserBrewery'});
-       Brewery.belongsToMany(models.Address, {through: 'AddressBrewery'});
+       Brewery.belongsToMany(models.Address, {through: 'BreweryAddress'});
         }
 
 
