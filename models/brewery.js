@@ -1,5 +1,5 @@
 'use strict'
-module.exports = function(sequelize, Sequelize) {
+module.exports = function (sequelize, Sequelize) {
     var Brewery = sequelize.define("Brewery", {
         breweryName: {
             type: Sequelize.STRING,
@@ -14,14 +14,36 @@ module.exports = function(sequelize, Sequelize) {
             validate: {
                 len: [1]
             }
-    }
-    });
-    //Associating breweries with beers and addresses 
-    Brewery.associate = function(models) {
-        Brewery.belongsToMany(models.user, {through: 'UserBrewery'});
-       Brewery.belongsToMany(models.Address, {through: 'BreweryAddress'});
+        },
+        address: {
+            type: Sequelize.STRING,
+            allowNull: true,
+            validate: {
+                len: [1]
+            }
+        },
+        rating: {
+            type: Sequelize.INTEGER,
+            allowNull: true,
+            validate: {
+                len: [1]
+            }
+        },
+        comments: {
+            type: Sequelize.STRING,
+            allowNull: true,
+            validate: {
+                len: [1]
+            }
         }
 
-    
+        });
+    //Associating breweries with beers and addresses 
+    Brewery.associate = function (models) {
+        Brewery.belongsToMany(models.user, { through: 'UserBrewery' });
+        Brewery.belongsToMany(models.Address, { through: 'BreweryAddress' });
+    }
+
+
     return Brewery;
 }
