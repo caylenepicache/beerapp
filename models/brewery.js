@@ -1,15 +1,16 @@
-module.exports = function(sequelize, DataTypes) {
+'use strict'
+module.exports = function(sequelize, Sequelize) {
     var Brewery = sequelize.define("Brewery", {
 
         id: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             autoIncrement: true, 
             primaryKey: true
         },
 
 
         breweryName: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: true,
             validate: {
                 len: [1]
@@ -17,28 +18,28 @@ module.exports = function(sequelize, DataTypes) {
 
         },
         rbBrewId: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
         address: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: true,
             validate: {
                 len: [1]
             }
         },
         rating: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: true,
             validate: {
                 len: [1]
             }
         },
         comments: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: true,
             validate: {
                 len: [1]
@@ -51,11 +52,14 @@ module.exports = function(sequelize, DataTypes) {
     //Associating breweries with beers and addresses 
 
     Brewery.associate = function(models) {
-        Brewery.belongsToMany(models.User, {
-            through: wishList
-        });
-    }
+        Brewery.belongsToMany(models.User, {through: 'UserBrewery'});
+       Brewery.belongsToMany(models.Address, {through: 'AddressBrewery'});
+        }
+
+
 
     return Brewery;
+
     return wishList;
 }
+

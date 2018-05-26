@@ -1,32 +1,38 @@
-module.exports = function(sequelize, DataTypes) {
+'use strict'
+module.exports = function(sequelize, Sequelize) {
     var Beer = sequelize.define("Beer", {
         beer: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: true,
             validate: {
                 len: [1]
             }
         },
         beerType: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: true,
             validate: {
                 len: [1]
             }
         },
         rating: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: true,
             validate: {
                 len: [1]
             }
         }, 
         wishList: {
-            type: DataTypes.BOOLEAN, 
+            type: Sequelize.BOOLEAN, 
             allowNull: false 
         }
     });
-    //Associating breweries with beers and addresses 
+    //Associating beers with users and 
+    Beer.associate = function(models) {
+        Beer.belongsToMany(models.User, {through: 'BeerUser'});
+    };
   
     return Beer;
 }
+
+
