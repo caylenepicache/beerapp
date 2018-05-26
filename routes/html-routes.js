@@ -29,7 +29,7 @@ module.exports = function(app) {
   });
 
   // blog route loads blog.html
-  app.get("/blog", function(req, res) {
+  app.get("/beers", function(req, res) {
     
   });
 

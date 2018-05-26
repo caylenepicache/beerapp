@@ -44,13 +44,18 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
             }               
 
-
+            
         }
 
     });
     //Associating breweries with beers and addresses 
 
+    Brewery.associate = function(models) {
+        Brewery.belongsToMany(models.User, {
+            through: wishList
+        });
+    }
 
-    
     return Brewery;
+    return wishList;
 }
