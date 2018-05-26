@@ -1,6 +1,11 @@
 'use strict'
 module.exports = function (sequelize, Sequelize) {
     var Brewery = sequelize.define("Brewery", {
+        id: {
+            type: Sequelize.INTEGER,
+            autoIncrement: true, 
+            primaryKey: true
+        },
         breweryName: {
             type: Sequelize.STRING,
             allowNull: true,
