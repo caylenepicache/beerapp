@@ -1,6 +1,6 @@
 'use strict'
 module.exports = function (sequelize, Sequelize) {
-    var User = sequelize.define("User", {
+    var User = sequelize.define("user", {
         id: {
             autoIncrement: true,
             primaryKey: true,
@@ -48,7 +48,7 @@ module.exports = function (sequelize, Sequelize) {
     });
     //Associating user with many to many relationships with Beers and Breweries
    User.associate = function(models) {
-        User.belongsToMany(models.Brewery, {through: 'BreweryUse'});
+        User.belongsToMany(models.Brewery, {through: 'BreweryUser'});
         User.belongsToMany(models.Beer, {through: 'BeerUser'});
         
     };

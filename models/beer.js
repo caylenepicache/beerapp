@@ -29,7 +29,7 @@ module.exports = function(sequelize, Sequelize) {
     });
     //Associating beers with users and 
     Beer.associate = function(db) {
-        Beer.belongsToMany(db.User, {through: 'UserBeer'});
+        Beer.belongsToMany(db.user, {through: 'UserBeer'});
     };
   
     return Beer;
