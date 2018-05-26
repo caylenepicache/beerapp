@@ -28,8 +28,8 @@ module.exports = function(sequelize, Sequelize) {
         }
     });
     //Associating beers with users and 
-    Beer.associate = function(db) {
-        Beer.belongsToMany(db.user, {through: 'UserBeer'});
+    Beer.associate = function(models) {
+        Beer.belongsToMany(models.user, {through: 'UserBeer'});
     };
   
     return Beer;
