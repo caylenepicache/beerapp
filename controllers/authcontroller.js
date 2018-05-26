@@ -18,6 +18,10 @@ exports.signin = function(req, res) {
     res.render('dashboard');
  
 }
+
+
+ 
+
 //LOGS USER OUT AND REDIRECTS TO SIGNIN PAGE
 exports.logout = function(req, res) {
  

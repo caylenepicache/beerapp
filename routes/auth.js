@@ -6,12 +6,29 @@ module.exports = function (app, passport) {
     app.get('/signin', authController.signin);
 
 
+    app.post('/signin',passport.authenticate('local-signin'),function(req, res) {
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    // successRedirect: '/dashboard';
+    if(req.user !==null){
+        res.redirect('/dashboard');
+        console.log(req.user);
+    }
+    else{
+        res.redirect('/signin')
+      //  failureRedirect: '/signin';
+    }
+    
+  });
     //ROUTE FOR POSTING TO SIGNIN 
-    app.post('/signin', passport.authenticate('local-signin', {
+    /*app.post('/signin', passport.authenticate('local-signin', {
+    
+    
         successRedirect: '/dashboard',
     
         failureRedirect: '/signin'
     }));
+    */
 
     //dashboard route handler checks if user is signed in
     app.get('/dashboard', isLoggedIn, authController.dashboard);
