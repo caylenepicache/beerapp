@@ -30,3 +30,9 @@ body {
   .card-form {
     opacity: 0.8;
   }
+
+  
+  #sign-up-button, #log-in-button {
+    margin: 30px;
+
+  }
