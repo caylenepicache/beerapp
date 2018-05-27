@@ -21,7 +21,7 @@ module.exports = function(app) {
       res.render('main', { User: data });
       
     });
-    */
+    */ 
   });
 
 
