@@ -33,7 +33,7 @@ module.exports = function (app, passport) {
     //dashboard route handler checks if user is signed in
     app.get('/dashboard', isLoggedIn, authController.dashboard);
 
-    app.get('/logout', authController.logout);
+    app.get('/signout', authController.logout);
 
    
  
