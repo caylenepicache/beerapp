@@ -16,10 +16,10 @@
 /* Landing Page Styles */
 #landing .col-lg-12 a {
     text-decoration: none;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 20px;
     padding: 7px 15px; 
-    color: black;
+    color:white;
     margin: 10px;
 }
 
@@ -34,10 +34,10 @@
 
 #sign-up-form .btn {
     text-decoration: none;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 20px;
     padding: 7px 15px; 
-    color: black;
+    color: white;
     margin: 10px;
 }
 /* ---------------------------- */
@@ -45,10 +45,10 @@
 /* Sign In Page */
 #sign-in-form .btn {
     text-decoration: none;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 20px;
     padding: 7px 15px; 
-    color: black;
+    color: white;
     margin: 10px;
 }
 /* ---------------------------- */
