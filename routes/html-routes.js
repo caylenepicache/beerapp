@@ -23,6 +23,7 @@ module.exports = function(app) {
   //gets sign-up page
   app.get("/signup", function(req, res) {
     res.render("signup");
+
   });
 
   //gets sign-in page

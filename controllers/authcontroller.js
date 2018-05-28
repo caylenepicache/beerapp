@@ -15,7 +15,8 @@ exports.signin = function(req, res) {
  //EXPORTING DASHBOARD INFORMATION FOR USER
  exports.dashboard = function(req, res) {
  
-    res.render('dashboard');
+    // res.render('dashboard');
+    res.sendFile(path.join(__dirname, "../views/dashboard.html"));
  
 }
 
@@ -27,7 +28,8 @@ exports.logout = function(req, res) {
  
     req.session.destroy(function(err) {
  
-        res.redirect('/signin');
+        // res.redirect('/signin');
+        console.log(req.user + " you are signed out");
  
     });
  
