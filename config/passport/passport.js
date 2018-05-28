@@ -43,7 +43,7 @@ module.exports = function (passport, user) {
                 where: {
                     email: email
                 }
-            }).then(function (user) {
+            }).then(function(user) {
                 //If user already exists message, the email has been used and return
                 if (user) {
                     console.log("The email is already taken");

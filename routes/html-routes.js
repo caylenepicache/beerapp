@@ -7,8 +7,8 @@
 // Dependencies
 // =============================================================
 var path = require("path");
-var db = require("../models")
-var exphbs = require('express-handlebars')
+var db = require("../models");
+var exphbs = require('express-handlebars');
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -31,26 +31,26 @@ module.exports = function(app) {
 
 
   // cms route loads cms.html
-  app.post("/api/breweries/", function(req, res) {
-    db.User.create(req.body).then(function(data) {
-      res.json(data);
-    });
-  });
+  // app.post("/api/breweries/", function(req, res) {
+  //   db.User.create(req.body).then(function(data) {
+  //     res.json(data);
+  //   });
+  // });
 
   // blog route loads blog.html
 
 
   
 
-  app.get("/beers", function(req, res) {
+  // app.get("/beers", function(req, res) {
 
     
-  });
+  // });
 
   // authors route loads author-manager.html
-  app.get("/authors", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-  });
+  // app.get("/authors", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/author-manager.html"));
+  // });
 
 
 };

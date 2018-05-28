@@ -30,7 +30,10 @@ module.exports = function(sequelize, Sequelize) {
     //Associating beers with users and 
     Beer.associate = function(models) {
 
-        Beer.belongsToMany(models.User, {through: 'BeerUser'});
+        Beer.belongsToMany(models.user, 
+            {
+                through: 'BeerUser'
+            });
 
 
     };
