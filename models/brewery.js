@@ -25,20 +25,20 @@ module.exports = function (sequelize, Sequelize) {
         },
         address: {
 
-
             type: Sequelize.STRING,
-
+            allowNull: true,
+            validate: {
+                len: [1]
             }
         },
         rating: {
-
             type: Sequelize.INTEGER,
-
+            allowNull: true,
+            validate: {
+                len: [1]
             }
         },
         comments: {
-
-
             type: Sequelize.STRING,
             allowNull: true,
             validate: {
