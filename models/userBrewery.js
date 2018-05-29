@@ -1,29 +1,20 @@
 module.exports = function (sequelize, Sequelize) {
-    var BreweryList = sequelize.define("BreweryList", {
-        brewery: {
+    var UserBrewery = sequelize.define("userBrewery", {
+        
+        breweryName: {
             type: Sequelize.STRING,
-
         },
+
         url: {
             type: Sequelize.STRING,
-
         },
+
         address: {
             type: Sequelize.STRING,
-
         },
-        latitude: {
-            type: Sequelize.DECIMAL(10, 7),
 
-        },
-        longitude: {
-            type: Sequelize.DECIMAL(10, 7),
-
-        },
         rbBrewId: {
             type: Sequelize.INTEGER,
- 
-
         }
 
     });
@@ -31,5 +22,5 @@ module.exports = function (sequelize, Sequelize) {
 
 
 
-    return BreweryList;
+    return UserBrewery;
 }
