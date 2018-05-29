@@ -4,7 +4,7 @@ $(document).ready(function() {
 
         event.preventDefault();
 
-        var breweryName = $("#breweryName");
+        var breweryName = $("#brewerName");
         var breweryAddress = $("#breweryAddress");
         var breweryURL = $("#breweryURL");
 
@@ -17,6 +17,10 @@ $(document).ready(function() {
             addingToWishlist(wishlist);
 
     });
+
+    function getFromDB(data) {
+        $.get("")
+    }
 
     function addToWishlist(data) {
         $.post("/api/wishlist/", data)
