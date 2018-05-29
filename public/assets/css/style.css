@@ -64,4 +64,23 @@
     margin: 10px;
 }
 /* ---------------------------- */
+/* DASHBOARD */
 
+#search-bar {
+    height: 100px;
+}
+
+#radioButtons {
+    float: left;
+    padding-top: 23px;
+    font-size: 20px
+}
+
+.input-group {
+    width: 90%
+}
+
+#search-submit {
+    height: 100px;
+    width: 200%
+}
