@@ -20,7 +20,10 @@ module.exports = function (sequelize, Sequelize) {
     });
     //Associating breweries with beers and addresses 
 
-
+UserBrewery.associate = function(models) {
+    UserBrewery.belongsToMany(models.user, { through: "UserBrewery"});
+    UserBrewery.belongsToMany(models.Brewery, { through: "UserBrewery"});
+}
 
     return UserBrewery;
 }

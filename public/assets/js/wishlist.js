@@ -29,4 +29,10 @@ $(document).ready(function() {
             console.log("user added brewery: " + data + "to the wishlist");
         });
     }
+
+    $.get("/wishlist", function(data) {
+        window.location.href = "landing"    
+        console.log(data);
+
+    })
 });

@@ -46,6 +46,7 @@ module.exports = function (sequelize, Sequelize) {
         }
 
     });
+    
 
     //Associating user with many to many relationships with Beers and Breweries
    User.associate = function(models) {
