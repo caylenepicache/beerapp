@@ -1,5 +1,7 @@
 //-------------------GLOBAL VARIABLES----------------------
 var search = "";
+var button1 = document.getElementById("radios1");
+var button2 = document.getElementById("radios2");
 
 //var keys = require('./keys.js');
 //var ratebeerkey = keys.ratebeer.id;
@@ -101,7 +103,13 @@ $(".input").keypress(function(event) {
     //check everytime it changes
     // Initalizes function to immediately display the added button
     //typeahead npm
-    beerSearchAjax();
+    //FIX --->
+    if (button1.checked){
+        alert("radio1 selected");
+        beerSearchAjax();
+    }else if (button2.checked) {
+        alert("radio2 selected");
+    }
     
 }}); 
 
