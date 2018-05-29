@@ -1,4 +1,5 @@
-var search = "sculpin";
+//-------------------GLOBAL VARIABLES----------------------
+var search = "";
 
 //var keys = require('./keys.js');
 //var ratebeerkey = keys.ratebeer.id;
@@ -17,7 +18,7 @@ if (search === objJSON.breweries[0].name) {
     brewID = objJSON.breweries[0].RBbrewId
 }
 */
-
+//-----------------SEARCH FOR SPECIFIC BEERS------------------
 function beerSearchAjax() {
     $.ajax({
         url: 'https://api.r8.beer/v1/api/graphql/',
@@ -43,25 +44,12 @@ function beerSearchAjax() {
         // Log the resulting object
         console.log(response);
         console.log(response.data.beerSearch.items[0].id);
-        /*
-        // Transfer content to HTML
-        $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-        $(".wind").text("Wind Speed: " + response.wind.speed);
-        $(".humidity").text("Humidity: " + response.main.humidity);
-        $(".temp").text("Temperature (F) " + response.main.temp);
 
-        // Log the data in the console as well
-        console.log("Wind Speed: " + response.wind.speed);
-        console.log("Humidity: " + response.main.humidity);
-        console.log("Temperature (F): " + response.main.temp);
-
-
-        */
       });
  };
 
  /*
-
+//----------------------------SEARCH FOR SPECIFIC BREWERIES-------------------
 function brewerySearchAjax() {
     $.ajax({
     url: 'https://api.r8.beer/v1/api/graphql/',
@@ -88,16 +76,7 @@ function brewerySearchAjax() {
     console.log(response);
     console.log(response.data.beerSearch.items[0].id);
     /*
-    // Transfer content to HTML
-    $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-    $(".wind").text("Wind Speed: " + response.wind.speed);
-    $(".humidity").text("Humidity: " + response.main.humidity);
-    $(".temp").text("Temperature (F) " + response.main.temp);
 
-    // Log the data in the console as well
-    console.log("Wind Speed: " + response.wind.speed);
-    console.log("Humidity: " + response.main.humidity);
-    console.log("Temperature (F): " + response.main.temp);
 
 
     
@@ -110,25 +89,20 @@ function brewerySearchAjax() {
 //    if ()
 //}
 
-/* -----------------CONNECT TO SEARCH BAR -------------------
+
+
+/* -----------------CONNECT TO SEARCH BAR ------------------- */
 $(".input").keypress(function(event) {
     if (event.which == 13) {
     event.preventDefault();
     // This line grabs the input from the textbox
-    search = $("#searchBar").val().trim();
+    search = $("#search-bar").val().trim();
     console.log(search)
     //check everytime it changes
     // Initalizes function to immediately display the added button
     //typeahead npm
-    if (searchType === 1) {
-        beerSearchAjax();
-    }
-    else {
-        brewerySearchAjax();
-    }
-    }
-}); 
+    beerSearchAjax();
+    
+}}); 
 
-*/
 
-beerSearchAjax();
