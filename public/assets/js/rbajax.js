@@ -95,21 +95,29 @@ function brewerySearchAjax() {
 
 /* -----------------CONNECT TO SEARCH BAR ------------------- */
 $(".input").keypress(function(event) {
-    if (event.which == 13) {
-    event.preventDefault();
+    //if (event.which == 13) {
+    //event.preventDefault();
     // This line grabs the input from the textbox
-    search = $("#search-bar").val().trim();
-    console.log(search)
+    //search = $("#search-bar").val().trim();
+    //console.log(search)
     //check everytime it changes
     // Initalizes function to immediately display the added button
     //typeahead npm
     //FIX --->
     if (button1.checked){
+        if (event.which == 13) {
+            event.preventDefault();
+            // This line grabs the input from the textbox
+            search = $("#search-bar").val().trim();
+            console.log(search)
         alert("radio1 selected");
         beerSearchAjax();
+        $("#search-bar").val("");
     }else if (button2.checked) {
         alert("radio2 selected");
+        
     }
+
     
 }}); 
 
