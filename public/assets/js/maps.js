@@ -41,11 +41,11 @@ document.addEventListener('DOMContentLoaded', function () {
       //Intializes the infoWindow obj
       var infowindow = new google.maps.InfoWindow({
         content: "<div id='infoWindow'>" +
-                 "<h1 id='brewerName'class='info'>" + marker.brewery + "</h1>" +
+                 "<h1 id='breweryName'class='info'>" + marker.brewery + "</h1>" +
                  "<p id='breweryAddress'class='info'>" + marker.address + "</p>" +
                  "<a id='breweryURL' href=" + marker.url + " target='_blank'>" + marker.url + 
                  "</a>" + 
-                 "<button id='wishlist-button'>Add It To Your Wishlist!</button>" + 
+                 "<button id='wishlist-button' value='" + marker.brewID + "' >Add It To Your Wishlist!</button>" + 
                  "</div>"
       });
   
