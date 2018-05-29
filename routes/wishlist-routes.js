@@ -1,28 +1,20 @@
 
-$(document).ready(function() { 
-    $("#wishlist-button").on("click", function(event) {
 
-        event.preventDefault();
+var db = require("../models");
 
-        var breweryName = $("#breweryName");
-        var breweryAddress = $("#breweryAddress");
-        var breweryURL = $("#breweryURL");
+module.exports = function(app) {
 
-           var wishlist = {
-                breweryName: breweryName.val(),
-                breweryAdress: address.val(),
-                breweryURL: url.val()
-            };
+    app.post("/api/wishlist", function(req, res){
+          db.UserBrewery.create(req.body).then(function(dbBrewery) {
+              console.log(dbBrewery);
+              res.json(dbBrewery);
+          })
+    })
 
-            addingToWishlist(wishlist);
 
-    });
 
-    function addToWishlist(data) {
-        $.post("/api/wishlist/", data)
-        .then(function(data) {
-            console.log(data);
-            console.log("user added brewery: " + data + "to the wishlist");
-        });
-    }
-});
+
+
+
+
+}
