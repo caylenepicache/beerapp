@@ -1,31 +1,20 @@
+
 //-------------------GLOBAL VARIABLES----------------------
 var search = "";
 var button1 = document.getElementById("radios1");
 var button2 = document.getElementById("radios2");
 
-//var keys = require('./keys.js');
+//var keys = require('./keys');
 //var ratebeerkey = keys.ratebeer.id;
-//console.log(ratebeerkey)
-
-//var fs = require("fs");
-//var objJSON = JSON.parse(fs.readFileSync('../data/csvjson.json', 'utf8'));
-
-//console.log(objJSON);
-//console.log("name: " + objJSON.breweries[0].name);
-//console.log("ID: " + objJSON.breweries[0].RBbrewId);
+//console.log("ratebeer: " + ratebeerkey)
 
 
-/*
-if (search === objJSON.breweries[0].name) {
-    brewID = objJSON.breweries[0].RBbrewId
-}
-*/
 //-----------------SEARCH FOR SPECIFIC BEERS------------------
 function beerSearchAjax() {
     $.ajax({
         url: 'https://api.r8.beer/v1/api/graphql/',
         headers: {
-            'x-api-key': '73i1tSPJcE4PlIEgT5vWA8pzyaz1hitV3hYmam7H',
+            'x-api-key': RATEBEER_ID,
             'content-type': "application/json",
             'accept': "application/json"
         },
@@ -50,13 +39,13 @@ function beerSearchAjax() {
       });
  };
 
- /*
+ 
 //----------------------------SEARCH FOR SPECIFIC BREWERIES-------------------
 function brewerySearchAjax() {
     $.ajax({
     url: 'https://api.r8.beer/v1/api/graphql/',
     headers: {
-        'x-api-key': ratebeerkey,
+        'x-api-key': '73i1tSPJcE4PlIEgT5vWA8pzyaz1hitV3hYmam7H',
         'content-type': "application/json",
         'accept': "application/json"
     },
@@ -76,8 +65,8 @@ function brewerySearchAjax() {
 
     // Log the resulting object
     console.log(response);
-    console.log(response.data.beerSearch.items[0].id);
-    /*
+    console.log(response.data.beersByBrewer.items[0].id);
+    
 
 
 
@@ -85,7 +74,7 @@ function brewerySearchAjax() {
     });
 };
 
-*/
+
 
 //function stringToId {
 //    if ()
@@ -95,30 +84,25 @@ function brewerySearchAjax() {
 
 /* -----------------CONNECT TO SEARCH BAR ------------------- */
 $(".input").keypress(function(event) {
-    //if (event.which == 13) {
-    //event.preventDefault();
-    // This line grabs the input from the textbox
-    //search = $("#search-bar").val().trim();
-    //console.log(search)
-    //check everytime it changes
-    // Initalizes function to immediately display the added button
-    //typeahead npm
-    //FIX --->
     if (button1.checked){
         if (event.which == 13) {
             event.preventDefault();
             // This line grabs the input from the textbox
             search = $("#search-bar").val().trim();
-            console.log(search)
-        alert("radio1 selected");
-        beerSearchAjax();
-        $("#search-bar").val("");
-    }else if (button2.checked) {
-        alert("radio2 selected");
-        
-    }
-
-    
-}}); 
+            console.log("searchbeer: " + search)
+            alert("radio1 selected");
+            beerSearchAjax();
+            $("#search-bar").val("");
+    }}
+    else if (button2.checked) {
+        if (event.which == 13) {
+            event.preventDefault();
+            search = $("#search-bar").val().trim();
+            console.log("searchbrew: " + search);
+            brewerySearchAjax();
+            alert("radio2 selected");
+            $("#search-bar").val("");
+    }}
+}); 
 
 
