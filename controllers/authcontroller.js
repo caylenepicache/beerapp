@@ -3,13 +3,13 @@ var exports = module.exports = {}
 //EXPORTING USER INPUT FOR SIGNING UP
 exports.signup = function(req, res) {
  
-    res.render('signup');
+    res.render('signup', {layout: 'access'});
  
 }
 //EXPORTING USER INPUT FOR SIGNING IN
 exports.signin = function(req, res) {
  
-    res.render('signin');
+    res.render('signin', {layout: 'access'});
  
 }
  //EXPORTING DASHBOARD INFORMATION FOR USER

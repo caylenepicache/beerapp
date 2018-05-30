@@ -54,28 +54,58 @@
     border: 1px solid white; 
 }
 /* ---------------------------- */
+.title-bar{
+    color: white; 
+    padding-top: 60px; 
+}
 
 /* Sign Up Page */
+#sign-up-form {
+    color: white; 
+    padding-top: 60px; 
+    width: 75%;
+    margin: 0 auto;
+}
 
 #sign-up-form .btn {
     text-decoration: none;
     border: 2px solid white;
     border-radius: 20px;
     padding: 7px 15px; 
-    color: black;
+    color: white;
     margin: 10px;
+    background: none; 
+}
+
+#sign-up-form .btn:hover {
+    color: black; 
+    background: white; 
 }
 /* ---------------------------- */
 
 /* Sign In Page */
+#sign-in-form {
+    color: white;
+    padding-top: 60px;
+    width: 40%; 
+    margin: 0 auto;
+    border-radius: 20px; 
+}
 #sign-in-form .btn {
     text-decoration: none;
     border: 2px solid white;
     border-radius: 20px;
     padding: 7px 15px; 
-    color: black;
+    color: white;
     margin: 10px;
+    background: none
 }
+
+#sign-in-form .btn:hover {
+    color: black;
+    background: white; 
+}
+
 /* ---------------------------- */
 /* DASHBOARD */
 
