@@ -1,12 +1,17 @@
 
-$(document).ready(function() { 
-    
+// $(document).ready(function() { 
+    var wishlist = $("#wishlist-button");
+    console.log(wishlist);
 
     $("#wishlist-button").on("click", function(event) {
-
-        var brewID = $(this).data("id");
-
         event.preventDefault();
+        
+        var wishlist = $("#wishlist-button");
+        console.log(wishlist);
+        var brewID = $(this).data("id");
+        console.log(brewID);
+
+        
 
     
         function getFromDB(brewID) {
@@ -18,10 +23,10 @@ $(document).ready(function() {
     });
 
     
-
+console.log("hello");
     function addToWishlist(data) {
         $.post("/api/brewery-wishlist", data)
         
     }
 
-});
+// });
