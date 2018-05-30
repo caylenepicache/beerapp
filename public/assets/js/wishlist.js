@@ -1,32 +1,32 @@
 
-// $(document).ready(function() { 
-    var wishlist = $("#wishlist-button");
-    console.log(wishlist);
+// // $(document).ready(function() { 
+//     var wishlist = $("#wishlist-button");
+//     console.log(wishlist);
 
-    $("#wishlist-button").on("click", function(event) {
-        event.preventDefault();
+//     $("#wishlist-button").on("click", function(event) {
+//         event.preventDefault();
         
-        var wishlist = $("#wishlist-button");
-        console.log(wishlist);
-        var brewID = $(this).data("id");
-        console.log(brewID);
+//         var wishlist = $("#wishlist-button");
+//         console.log(wishlist);
+//         var brewID = $(this).attr("data-id");
+//         console.log(brewID);
 
         
 
     
-        function getFromDB(brewID) {
-            $.get("/api/wishlist", brewID);
-        }
+//         function getFromDB(brewID) {
+//             $.get("/api/wishlist", brewID);
+//         }
             
 
 
-    });
+//     });
 
     
-console.log("hello");
-    function addToWishlist(data) {
-        $.post("/api/brewery-wishlist", data)
+// console.log("hello");
+//     function addToWishlist(data) {
+//         $.post("/api/brewery-wishlist", data)
         
-    }
+//     }
 
 // });

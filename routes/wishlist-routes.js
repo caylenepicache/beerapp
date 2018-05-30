@@ -3,31 +3,6 @@ var db = require("../models");
 var exphbs = require('express-handlebars');
 
 
-<<<<<<< HEAD
-module.exports = function(app) {
-
-/*
-app.post('/wishlist', function(req, res) {
-
-    db.User.findAll({
-        where: {
-            id: req.user
-        },
-       // include: [db.Wishlist]
-      })
-    .then(function(user) {
-      console.log("hello" + req.user); 
-    })
-})
-
-
-app.get("/wishlist", function(req, res) {
-    res.render("landing");
-});
-*/
-};
-
-=======
 
 module.exports = function(app) {
 
@@ -47,4 +22,3 @@ module.exports = function(app) {
 
 
 }
->>>>>>> ce2faf43816b61c297e29dec4a84ef2944a6592e
