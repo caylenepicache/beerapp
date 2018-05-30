@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelectorAll('#map').length > 0)
   {
@@ -79,19 +80,29 @@ function wishlist() {
   var name = $(".wishlist-button").attr("data-name");
   var brewID = $(".wishlist-button").attr("data-value");
 
+
+
   wishItems.push(url);
   wishItems.push(address);
   wishItems.push(name);
   wishItems.push(brewID);
 
+  
+//console.log("test"+ req.user.id)
   console.log(url);
   console.log(address);
   console.log(name);
   console.log(brewID);
 
+  
+
   function userWishlistPost(wishItems) {
     $.post("/api/wishlist", wishItems).then(console.log(wishItems));
   }
+  userWishlistPost(wishItems);
+
+
 
 
 };
+

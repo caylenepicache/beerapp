@@ -11,91 +11,100 @@ var db = require("../models");
 var exphbs = require('express-handlebars');
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function (app, passport) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // index route loads landing page for signing up or signing in.
-  app.get("/", function(req, res) {
-      res.render('landing');
+  app.get("/", function (req, res) {
+    res.render('landing');
   });
 
   //gets sign-up page
-  app.get("/signup", function(req, res) {
+  app.get("/signup", function (req, res) {
     res.render("signup");
 
   });
 
   //gets sign-in page
-  app.get("/signin", function(req,res){
+  app.get("/signin", function (req, res) {
     res.render("signin");
   })
 
 
-  app.use('/wishlist', function(req, res) {
+  app.use('/wishlist', function (req, res) {
 
     db.Beer.create(
       {
-  //console.log(req.user.id)
-    user:'Sculpin',
-    beerType: 'IPA',
-    rating: '4',
-    wishList: '2',
-  },
-    db.user.addBeer(db.Beer, {through :{status: 'started'}})
-  )
-  
-  //db.Beer.create(data);
+        //console.log(req.user.id)
+        user: 'Sculpin',
+        beerType: 'IPA',
+        rating: '4',
+        wishList: '2',
+      },
+      db.user.addBeer(db.Beer, { through: { status: 'started' } })
+    )
+
+    //db.Beer.create(data);
 
 
   })
 
-  app.get('/retrievedata', function(req, res){
+  app.get('/retrievedata', function (req, res) {
     db.Beer.findAll({
       include: [{
         model: db.user
       }]
-  })
-  .then(function(Beer){
-    res.render('wishlist', {Beer: Beer})
-  })
-  .catch(function(err){
-    res.json(err)
-  })
-});
-
-
-  // cms route loads cms.html
-  // app.post("/api/breweries/", function(req, res) {
-  //   db.User.create(req.body).then(function(data) {
-  //     res.json(data);
-  //   });
-  // });
-
-  // blog route loads blog.html
-
-    app.get("/wishlist", function(req, res) {
-      res.render('wishlist');
+    })
+      .then(function (Beer) {
+        res.render('wishlist', { Beer: Beer })
+      })
+      .catch(function (err) {
+        res.json(err)
+      })
   });
-  
 
-  app.post("/api/wishlist", function(req, res) {
-    db.wishlist1s.create(req.body).then(function(data){
-      res.json(data);
-    console.log(data);
+
+
+  app.get("/wishlist", function (req, res) {
+    console.log(req.user);
   });
-});
-
-  // app.get("/beers", function(req, res) {
-
-    
-  // });
-
-  // authors route loads author-manager.html
-  // app.get("/authors", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-  // });
 
 
-};
+  app.post("/api/wishlist", function (req, res) {
+    console.log(req.body[0]);
+
+
+    db.wishlist1.create({
+      address: req.body[1],
+      userID: req.user.id,
+      rbBrewId: req.body[3],
+      url: req.body[0],
+      brewery: req.body[2]
+
+
+    });
+
+
+
+
+
+
+  });
+
+  function ensureAuthenticated(req, res) {
+    if (req.isAuthenticated())
+      console.log("this is true");
+    else {
+      res.redirect('/signin')
+    }
+
+  }
+
+}
+
+
+
+
+
 
