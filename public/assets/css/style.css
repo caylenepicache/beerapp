@@ -1,3 +1,6 @@
+body {
+    width: 100%; 
+}
 .title, .title-text, .brewSearch {
     font-size: 30px;
     font-weight: bold;
@@ -9,7 +12,7 @@
 
 #map {
     height: 600px;
-    width: 100%;
+    width: 75%;
     border: 3px solid black;
     margin: 50px auto; 
 }
@@ -131,6 +134,8 @@
 
 
 #access-body {
-    background: url("../img/bar.jpg") no-repeat;
+    background: url("../img/bar.jpg");
     background-size: cover; 
+    width: 100%;
+    overflow: hidden; 
 }

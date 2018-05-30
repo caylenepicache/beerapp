@@ -11,7 +11,7 @@ body {
     background: url("../img/home.jpg") no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    min-height: 400px;
+    min-height: 300px;
   }
   #home-section .dark-overlay {
     background-color: rgba 0, 0, 0, 0.7;
