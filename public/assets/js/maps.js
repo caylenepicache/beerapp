@@ -1,4 +1,5 @@
 
+
 document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelectorAll('#map').length > 0)
   {
@@ -87,6 +88,14 @@ function wishlist() {
   wishItems.push(name);
   wishItems.push(brewID);
 
+  var data = {
+    address: address, 
+    userID: '1', 
+    rbBrewid: brewID,
+    url: url, 
+    brewery: name
+  }
+
   
 //console.log("test"+ req.user.id)
   console.log(url);
@@ -96,10 +105,10 @@ function wishlist() {
 
   
 
-  function userWishlistPost(wishItems) {
-    $.post("/api/wishlist", wishItems).then(console.log(wishItems));
+  function userWishlistPost(data) {
+    $.post("/api/wishlist", data).then(console.log(data));
   }
-  userWishlistPost(wishItems);
+  userWishlistPost(data);
 
 
 

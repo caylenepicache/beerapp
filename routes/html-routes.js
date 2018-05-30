@@ -75,18 +75,15 @@ module.exports = function (app, passport) {
     console.log(req.body[0]);
 
 
-    db.wishlist1.create({
-      address: req.body[1],
-      userID: req.user.id,
-      rbBrewId: req.body[3],
-      url: req.body[0],
-      brewery: req.body[2]
+    db.wishlist1.create(req.body
+      //address: req.body[1],
+      //userID: req.user.id,
+      //rbBrewId: req.body[3],
+      //url: req.body[0],
+      //brewery: req.body[2]
 
 
-    });
-
-
-
+    );
 
 
 
