@@ -25,7 +25,7 @@ function beerSearchAPI(req, res){
 
     request.post({
         headers: {
-            'x-api-key': "73i1tSPJcE4PlIEgT5vWA8pzyaz1hitV3hYmam7H",
+            'x-api-key': process.env.RATEBEER_ID,
             'content-type': "application/json",
             'accept': "application/json"
         },
@@ -46,7 +46,7 @@ function brewerySearchAPI(req,res){
 
     request.post({
         headers: {
-            'x-api-key': "73i1tSPJcE4PlIEgT5vWA8pzyaz1hitV3hYmam7H",
+            'x-api-key': process.env.RATEBEER_ID,
             'content-type': "application/json",
             'accept': "application/json"
         },
