@@ -79,13 +79,9 @@ module.exports = function(app) {
   });
   
 
-  app.get("/api/wishlist", function(req, res) {
-    db.sdbreweries.findOne(
-      {
-        where: {
-          breweryid: req.data-id
-        }
-    }).then(function(data){
+  app.post("/api/wishlist", function(req, res) {
+    db.wishlist1s.create(req.body).then(function(data){
+      res.json(data);
     console.log(data);
   });
 });
