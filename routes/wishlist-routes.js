@@ -13,9 +13,7 @@ module.exports = function(app) {
     //       })
     // });
 
-    app.get("/wishlist", function(req, res) {
-        res.render('landing');
-    });
+    
 
 
 

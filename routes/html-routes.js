@@ -27,7 +27,9 @@ module.exports = function(app) {
   });
 
   //gets sign-in page
-  app.get("/signin")
+  app.get("/signin", function(req,res){
+    res.render("signin");
+  })
 
 
   // cms route loads cms.html
@@ -39,7 +41,9 @@ module.exports = function(app) {
 
   // blog route loads blog.html
 
-
+  app.get("/wishlist", function(req, res) {
+    res.render('wishlist');
+});
   
 
   // app.get("/beers", function(req, res) {

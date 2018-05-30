@@ -1,7 +1,8 @@
+
 module.exports = function (sequelize, Sequelize) {
     var UserBrewery = sequelize.define("userBrewery", {
         
-        breweryName: {
+        brewery: {
             type: Sequelize.STRING,
         },
 
@@ -15,15 +16,15 @@ module.exports = function (sequelize, Sequelize) {
 
         rbBrewId: {
             type: Sequelize.INTEGER,
+        },
+
+        userID: {
+            type: Sequelize.INTEGER,
         }
 
     });
-    //Associating breweries with beers and addresses 
-
-UserBrewery.associate = function(models) {
-    UserBrewery.belongsToMany(models.user, { through: "UserBrewery"});
-    UserBrewery.belongsToMany(models.Brewery, { through: "UserBrewery"});
-}
 
     return UserBrewery;
+
+
 }

@@ -30,9 +30,4 @@ $(document).ready(function() {
         });
     }
 
-    $.get("/wishlist", function(data) {
-        window.location.href = "landing"    
-        console.log(data);
-
-    })
 });
