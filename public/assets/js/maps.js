@@ -70,12 +70,15 @@ function plotMarkers(breweriesObj){
 }
 
 
+
 function wishlist() {
   var wishItems = []
+
   var url = $(".wishlist-button").attr("data-url");
   var address = $(".wishlist-button").attr("data-address");
   var name = $(".wishlist-button").attr("data-name");
   var brewID = $(".wishlist-button").attr("data-value");
+
   wishItems.push(url);
   wishItems.push(address);
   wishItems.push(name);
