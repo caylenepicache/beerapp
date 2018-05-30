@@ -29,16 +29,6 @@ module.exports = function(sequelize, Sequelize) {
     });
     //Associating beers with users and 
 
-<<<<<<< HEAD
-        Beer.belongsToMany(models.user, 
-            {
-                through: 'UserBeer'
-            });
-
-
-    };
-=======
->>>>>>> ce2faf43816b61c297e29dec4a84ef2944a6592e
   
     return Beer;
 }
