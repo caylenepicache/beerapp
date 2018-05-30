@@ -21,15 +21,15 @@ module.exports = function (app, passport) {
       res.render('landing', {layout: 'access'});
   });
 
-  //gets sign-up page
-  app.get("/signup", function(req, res) {
-    res.render('signup', {layout: 'access'});
-  });
+  //gets sign-up page 
+  //app.get("/signup", function(req, res) {
+    //res.render('signup', {layout: 'access'});
+  //});
 
   //gets sign-in page
-  app.get("/signin", function(req,res){
-    res.render('signin', {layout: 'access'});
-  })
+  //app.get("/signin", function(req,res){
+    //res.render('signin', {layout: ''});
+  //})
 
 
   app.use('/wishlist', function (req, res) {
