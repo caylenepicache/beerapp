@@ -17,4 +17,10 @@ $(document).ready(function() {
             console.log(data);
         });
     }
+    
+    function getWishlist(data);
+        $.get("/wishlist", function(data) {    
+            console.log(data);
+
+        });
 });

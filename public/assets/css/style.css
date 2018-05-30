@@ -8,10 +8,21 @@
 }
 
 #map {
-    height: 200px;
-    width: 300px;
+    height: 600px;
+    width: 100%;
     border: 3px solid black;
+    margin: 50px auto; 
 }
+
+.info {
+    color: black;
+  }
+
+  #wishlist-button {
+      display: block; 
+      margin-top: 10px;
+  }
+  
 
 /* Landing Page Styles */
 #landing .col-lg-12 a {
@@ -53,4 +64,24 @@
     margin: 10px;
 }
 /* ---------------------------- */
+/* DASHBOARD */
 
+#search-bar {
+    height: 100px;
+    font-size: 30px
+}
+
+#radioButtons {
+    float: left;
+    padding-top: 23px;
+    font-size: 20px
+}
+
+.input-group {
+    width: 90%
+}
+
+#search-submit {
+    height: 100px;
+    width: 200%
+}

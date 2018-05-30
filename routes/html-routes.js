@@ -27,7 +27,9 @@ module.exports = function(app) {
   });
 
   //gets sign-in page
-  app.get("/signin")
+  app.get("/signin", function(req,res){
+    res.render("signin");
+  })
 
 
   app.use('/wishlist', function(req, res) {
@@ -72,8 +74,21 @@ module.exports = function(app) {
 
   // blog route loads blog.html
 
-
+    app.get("/wishlist", function(req, res) {
+      res.render('wishlist');
+  });
   
+
+  app.get("/api/wishlist", function(req, res) {
+    db.sdbreweries.findOne(
+      {
+        where: {
+          breweryid: req.data-id
+        }
+    }).then(function(data){
+    console.log(data);
+  });
+});
 
   // app.get("/beers", function(req, res) {
 

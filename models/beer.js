@@ -28,8 +28,8 @@ module.exports = function(sequelize, Sequelize) {
         }
     });
     //Associating beers with users and 
-    Beer.associate = function(models) {
 
+<<<<<<< HEAD
         Beer.belongsToMany(models.user, 
             {
                 through: 'UserBeer'
@@ -37,6 +37,8 @@ module.exports = function(sequelize, Sequelize) {
 
 
     };
+=======
+>>>>>>> ce2faf43816b61c297e29dec4a84ef2944a6592e
   
     return Beer;
 }
