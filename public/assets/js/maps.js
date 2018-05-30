@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                  "<p id='breweryAddress'class='info'>" + marker.address + "</p>" +
                  "<a id='breweryURL' href=" + marker.url + " target='_blank'>" + marker.url + 
                  "</a>" + 
-                 "<button id='wishlist-button' value='" + marker.brewID + "' >Add It To Your Wishlist!</button>" + 
+                 "<button id='wishlist-button' data-id='" + marker.brewID + "' >Add It To Your Wishlist!</button>" + 
                  "</div>"
       });
   
