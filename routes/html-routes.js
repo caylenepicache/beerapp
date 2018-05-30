@@ -17,18 +17,17 @@ module.exports = function(app) {
 
   // index route loads landing page for signing up or signing in.
   app.get("/", function(req, res) {
-      res.render('landing');
+      res.render('landing', {layout: 'access'});
   });
 
   //gets sign-up page
   app.get("/signup", function(req, res) {
-    res.render("signup");
-
+    res.render('signup', {layout: 'access'});
   });
 
   //gets sign-in page
   app.get("/signin", function(req,res){
-    res.render("signin");
+    res.render('signin', {layout: 'access'});
   })
 
 
