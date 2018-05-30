@@ -30,6 +30,39 @@ module.exports = function(app) {
   app.get("/signin")
 
 
+  app.use('/wishlist', function(req, res) {
+
+    db.Beer.create(
+      {
+  //console.log(req.user.id)
+    user:'Sculpin',
+    beerType: 'IPA',
+    rating: '4',
+    wishList: '2',
+  },
+    db.user.addBeer(db.Beer, {through :{status: 'started'}})
+  )
+  
+  //db.Beer.create(data);
+
+
+  })
+
+  app.get('/retrievedata', function(req, res){
+    db.Beer.findAll({
+      include: [{
+        model: db.user
+      }]
+  })
+  .then(function(Beer){
+    res.render('wishlist', {Beer: Beer})
+  })
+  .catch(function(err){
+    res.json(err)
+  })
+});
+
+
   // cms route loads cms.html
   // app.post("/api/breweries/", function(req, res) {
   //   db.User.create(req.body).then(function(data) {

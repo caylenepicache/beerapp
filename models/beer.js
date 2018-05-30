@@ -32,7 +32,7 @@ module.exports = function(sequelize, Sequelize) {
 
         Beer.belongsToMany(models.user, 
             {
-                through: 'BeerUser'
+                through: 'UserBeer'
             });
 
 
