@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                  "<p id='breweryAddress'class='info'>" + marker.address + "</p>" +
                  "<a id='breweryURL' href=" + marker.url + " target='_blank'>" + marker.url + 
                  "</a>" + 
-                 "<button id='wishlist-button' data-id='" + marker.brewID + "' >Add It To Your Wishlist!</button>" + 
+                 "<button onClick='wishlist' class='wishlist-button' data-id='" + marker.brewID + "' >Add It To Your Wishlist!</button>" + 
                  "</div>"
       });
   
@@ -69,7 +69,18 @@ document.addEventListener('DOMContentLoaded', function () {
     map.fitBounds(bounds);
   }
   
+  function wishlist(){
+
+$(".wishlist-button").on("click", function(event) {
+
+  var wishlist = $(".wishlist-button");
+        console.log(wishlist);
+        var brewID = $(wishlist).attr("data-id");
+        console.log(brewID);
   
+      });
+};
   
-  
+
+
   
