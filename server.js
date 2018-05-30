@@ -1,3 +1,4 @@
+require('dotenv').config();
 // DEPENDENCIES
 var express = require('express');
 var app = express();
@@ -13,9 +14,12 @@ var session = require('express-session');
 
 var bodyParser = require('body-parser');
 var env = require('dotenv').load(); 
+console.log("ratebeer id" + process.env.RATEBEER_ID);
 
 //var models = require("./models");
 var db = require('./models');
+var keys = require('./keys');
+console.log("ratebeer id from keys: " + keys.ratebeer.id);
 
 
 
@@ -42,6 +46,7 @@ app.set('views', './views')
 
 //add passport as a parameter
 var authRoute = require('./routes/auth.js')(app, passport); 
+var search = require('./routes/search.js')(app);
 
 var exphbs = require('express-handlebars')
 
@@ -56,6 +61,7 @@ require('./config/passport/passport.js')(passport, db.user);
 
 // ROUTING
 require('./routes/html-routes')(app);
+
 
 
 // RUN SERVER/ SYNC DATABASE
