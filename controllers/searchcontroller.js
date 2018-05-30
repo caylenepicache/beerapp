@@ -65,7 +65,7 @@ function brewerySearchAPI(req,res){
 
 //var apiResults;
 
-if(req.body.searchType === 0){
+if(req.body.searchType == 0){
     //parse json from ratebeer and store in mysql
     //apiResults = brewerySearchAPI(req);
   //  console.log("apiresults: "+ apiResults);
