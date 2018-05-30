@@ -16,19 +16,19 @@ module.exports = function (app, passport) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // index route loads landing page for signing up or signing in.
-  app.get("/", function (req, res) {
-    res.render('landing');
+
+  app.get("/", function(req, res) {
+      res.render('landing', {layout: 'access'});
   });
 
   //gets sign-up page
-  app.get("/signup", function (req, res) {
-    res.render("signup");
-
+  app.get("/signup", function(req, res) {
+    res.render('signup', {layout: 'access'});
   });
 
   //gets sign-in page
-  app.get("/signin", function (req, res) {
-    res.render("signin");
+  app.get("/signin", function(req,res){
+    res.render('signin', {layout: 'access'});
   })
 
 
