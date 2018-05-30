@@ -29,4 +29,5 @@ $(document).ready(function() {
             console.log("user added brewery: " + data + "to the wishlist");
         });
     }
+
 });
