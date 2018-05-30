@@ -70,12 +70,11 @@ function plotMarkers(breweriesObj){
 }
 
 
-var wishlist = function(val, url1) {
-  console.log(val);
+var wishlist = function() {
   var url = $(".wishlist-button").attr("data-url");
   var address = $(".wishlist-button").attr("data-address");
   var name = $(".wishlist-button").attr("data-name");
-  var brewID = $(".wishlist-button").attr("data-url");
+  var brewID = $(".wishlist-button").attr("data-value");
   console.log(url);
   console.log(address);
   console.log(name);
