@@ -1,33 +1,32 @@
 
-$(document).ready(function() { 
-    $("#wishlist-button").on("click", function(event) {
+// // $(document).ready(function() { 
+//     var wishlist = $("#wishlist-button");
+//     console.log(wishlist);
 
-        event.preventDefault();
+//     $("#wishlist-button").on("click", function(event) {
+//         event.preventDefault();
+        
+//         var wishlist = $("#wishlist-button");
+//         console.log(wishlist);
+//         var brewID = $(this).attr("data-id");
+//         console.log(brewID);
 
-        var breweryName = $("#brewerName");
-        var breweryAddress = $("#breweryAddress");
-        var breweryURL = $("#breweryURL");
+        
 
-           var wishlist = {
-                breweryName: breweryName.val(),
-                breweryAdress: address.val(),
-                breweryURL: url.val()
-            };
+    
+//         function getFromDB(brewID) {
+//             $.get("/api/wishlist", brewID);
+//         }
+            
 
-            addingToWishlist(wishlist);
 
-    });
+//     });
 
-    function getFromDB(data) {
-        $.get("")
-    }
+    
+// console.log("hello");
+//     function addToWishlist(data) {
+//         $.post("/api/brewery-wishlist", data)
+        
+//     }
 
-    function addToWishlist(data) {
-        $.post("/api/wishlist/", data)
-        .then(function(data) {
-            console.log(data);
-            console.log("user added brewery: " + data + "to the wishlist");
-        });
-    }
-
-});
+// });

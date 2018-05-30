@@ -5,14 +5,13 @@ body {
   
   .navbar {
     border-bottom: #008ed6 3px solid;
-    opacity: 0.8;
   }
   
   #home-section {
     background: url("../img/home.jpg") no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    min-height: 700px;
+    min-height: 400px;
   }
   #home-section .dark-overlay {
     background-color: rgba 0, 0, 0, 0.7;

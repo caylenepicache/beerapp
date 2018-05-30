@@ -1,6 +1,6 @@
 'use strict'
 module.exports = function(sequelize, Sequelize) {
-    var Address = sequelize.define("Address", {
+    var wishlist1 = sequelize.define("wishlist1", {
         address: {
             type: Sequelize.STRING,
             allowNull: true,
@@ -8,18 +8,26 @@ module.exports = function(sequelize, Sequelize) {
                 len: [1]
             }
         },
-        favorite: {
-            type: Sequelize.BOOLEAN, 
+        userID: {
+            type: Sequelize.INTEGER, 
             allowNull: false
+        },
+        rbBrewId: {
+            type: Sequelize.STRING,
+            allowNUll: true
+        },
+        url: {
+            type: Sequelize.STRING,
+            allowNull: true
+        },
+        brewery: {
+            type: Sequelize.STRING,
+            allowNUll: false
         }
         
     });
-    //Associating address to breweries
-    Address.associate = function(models){
-        Address.belongsTo(models.Brewery, {through: 'BreweryAddress'});
-        
-
-    }
-    return Address;
+    //Associating wishlist1 to breweries
+    
+    return wishlist1;
 }
 
