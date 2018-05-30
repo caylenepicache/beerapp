@@ -50,11 +50,9 @@ module.exports = function(app) {
     db.sdbreweries.findOne(
       {
         where: {
-          breweryid: req.body
+          breweryid: req.data-id
         }
-      
-    }
-).then(function(data){
+    }).then(function(data){
     console.log(data);
   });
 });
