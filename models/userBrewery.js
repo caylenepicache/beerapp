@@ -1,7 +1,8 @@
+
 module.exports = function (sequelize, Sequelize) {
     var UserBrewery = sequelize.define("userBrewery", {
         
-        breweryName: {
+        brewery: {
             type: Sequelize.STRING,
         },
 
@@ -15,12 +16,15 @@ module.exports = function (sequelize, Sequelize) {
 
         rbBrewId: {
             type: Sequelize.INTEGER,
+        },
+
+        userID: {
+            type: Sequelize.INTEGER,
         }
 
     });
-    //Associating breweries with beers and addresses 
-
-
 
     return UserBrewery;
+
+
 }

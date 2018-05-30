@@ -10,7 +10,7 @@ module.exports = function (sequelize, Sequelize) {
 
         breweryName: {
             type: Sequelize.STRING,
-            allowNull: true,
+            allowNull: false,
             validate: {
                 len: [1]
             }
@@ -24,9 +24,8 @@ module.exports = function (sequelize, Sequelize) {
             }
         },
         address: {
-
             type: Sequelize.STRING,
-            allowNull: true,
+            allowNull: false,
             validate: {
                 len: [1]
             }
@@ -49,22 +48,22 @@ module.exports = function (sequelize, Sequelize) {
         });
     //Associating breweries with beers and addresses 
 
-    Brewery.associate = function (models) {
-        Brewery.belongsToMany(models.user, 
-                { 
-                    through: 'UserBrewery' 
-            });
+    // Brewery.associate = function (models) {
+    //     Brewery.belongsToMany(models.user, 
+    //             { 
+    //                 through: 'UserBrewery' 
+    //         });
         
         
-        Brewery.belongsToMany(models.Address, 
-            { 
-                through: 'BreweryAddress' 
-        });
+    //     // Brewery.belongsToMany(models.Address, 
+    //     //     { 
+    //     //         through: 'BreweryAddress' 
+    //     // });
  
 
 
     
 
-    }
+    // }
     return Brewery;
 };
