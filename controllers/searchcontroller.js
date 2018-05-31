@@ -58,6 +58,7 @@ function beerSearchAPI(req, res){
             console.log("NAME: " + apiData.data.beerSearch.items[0].name)
             //return apiData;
         }}).pipe(res)
+    
         //console.log("apiData: "+ apiData);
         //return apiData;
     };
