@@ -111,6 +111,7 @@ function wishlist() {
     $.post("/api/wishlist", data).then(console.log(data));
   }
   userWishlistPost(data);
+  
 }
   //
 
@@ -123,16 +124,19 @@ function wishlist() {
       dataId : id
     }
   
-  
-    
 
     function breweriesVisitedPost(data){
-      $.post("/api/update", data).then(console.log(data));
+      $.post("/api/update", data).then(location.reload())
+        
+  
+
     }
    
     breweriesVisitedPost(data); 
+
   }
 
+  
 
 
 
