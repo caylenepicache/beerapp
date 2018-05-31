@@ -2,6 +2,7 @@ var exports = module.exports = {};
 var express = require('express');
 var router = express.Router({mergeParams: true});
 var request = require('request');
+var brewJSONID;
 
 //function takes in a string and boolean/int/something
 
@@ -14,6 +15,22 @@ var request = require('request');
 //parse json from ratebeer and store in mysql
 //return data to user
 
+var fs = require("fs");
+var brewObjJSON = JSON.parse(fs.readFileSync('./public/assets/json/breweries.json', 'utf8'));
+
+console.log(brewObjJSON);
+console.log("Name from breweJSON: " + brewObjJSON[0].brewery);
+
+//-----------QUERY MATCHES ID IN JSON--------------------
+function matchQuerytoID(req) {
+    for (i=0; i<brewObjJSON.length; i++) {
+        if(brewObjJSON[i].brewery == req.body.searchQuery) {
+            brewJSONID = brewObjJSON[i].brewID
+            console.log(brewJSONID);
+        }
+    }
+}
+
 exports.searchToApi = function(req, res) {
     var resultApiData;
     console.log("searchtype: " + req.body.searchType);
@@ -22,6 +39,7 @@ exports.searchToApi = function(req, res) {
     //make a POST to ratebeer
 function beerSearchAPI(req, res){
     var apiData;
+   
 
     request.post({
         headers: {
@@ -33,15 +51,23 @@ function beerSearchAPI(req, res){
         body: '{"query":"query {beerSearch(query: \\"' + req.body.searchQuery + '\\", first: 10) {items {id name description averageRating ratingCount imageUrl brewer {id}}}}", "variables":"{}", "operationName":null}'
       },function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(body)
-            apiData = body;
+            console.log(body);
+            //JSON.parse(body);
+            apiData = JSON.parse(body);
+            console.log("apidata: " + apiData)
+            console.log("NAME: " + apiData.data.beerSearch.items[0].name)
             //return apiData;
         }}).pipe(res)
         //console.log("apiData: "+ apiData);
         //return apiData;
     };
 
+
 function brewerySearchAPI(req,res){
+
+    matchQuerytoID(req);
+    console.log("id in the function:" + brewJSONID)
+
     var apiData;
 
     request.post({
@@ -51,11 +77,16 @@ function brewerySearchAPI(req,res){
             'accept': "application/json"
         },
         url: 'https://api.r8.beer/v1/api/graphql/',
-        body: '{"query":"query {beersByBrewer(brewerId: \\"' + req.body.searchQuery + '\\", first: 10) {items {id name description averageRating imageUrl brewer {id} style {name} }}}", "variables":"{}", "operationName":null}'
+        body: '{"query":"query {beersByBrewer(brewerId: \\"' + brewJSONID + '\\", first: 10) {items {id name description averageRating imageUrl brewer {id} style {name} }}}", "variables":"{}", "operationName":null}'
         },function (error, response, body) {
         if (!error && response.statusCode == 200) {
+
+
             console.log(body)
             apiData = body;
+
+            console.log("apidata: " + apiData)
+            //console.log("NAME: " + apiData.data.beerSearch.items[0].name)
             //return apiData;
         }}).pipe(res)
         console.log("apiData: "+ apiData);
