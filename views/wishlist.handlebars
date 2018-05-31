@@ -27,12 +27,12 @@
     <div class="row">
 
       <div class="col-lg-6">
-        <h2>Try one of these Breweries!</h2>
+        <h2>Try a New Brewery!</h2>
         <table class="table">
           <thead>
             <tr>
               <th scope="col">Brewery</th>
-              <th scope="col">Url</th>
+              <th scope="col">Cheers!</th>
             </tr>
           </thead>
         {{#each brewery}} {{#unless tried}}
@@ -41,6 +41,7 @@
               <td>{{this.brewery}}</td>
               <!--<td>{{this.url}}</td>-->
               <td> <button onclick="breweriesVisited({{id}})"  id="change-state" data-id="{{id}}" data-state="{{tried}}">Tried it!</button></td>
+              <td> <button id="change-state" data-id="{{id}}" data-state="{{tried}}"><img src="assets/img/cheers.png" class="img-fluid"></button></td>
             </tr>
           </tbody>
         {{/unless}} {{/each}}
@@ -48,7 +49,7 @@
       </div>
 
       <div class="col-lg-6">
-        <h2>Breweries you have tried.</h2>
+        <h2>Your List of Good Times.</h2>
         {{#each brewery }} {{#if tried}}
         <table class="table">
           <thead>
