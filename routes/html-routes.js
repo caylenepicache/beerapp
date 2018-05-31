@@ -42,11 +42,12 @@ module.exports = function (app, passport) {
 
 
 
+
   app.get("/wishlist", function (req, res) {
       res.render('wishlist', {layout: 'main'}); 
   });
   
-  app.get("/retrieveWishlist", function (req, res) {
+//   app.get("/retrieveWishlist", function (req, res) {
  /*var query = {};
   if(req.user.id !== null){
     query.userID = req.user.id
@@ -62,16 +63,17 @@ module.exports = function (app, passport) {
       })
 */
 
-  db.wishlist1.findAll({
-    where:{ 
-     userID: req.user.id }
-    //attributes: ['address', 'userID', 'rbBrewid', 'url', 'brewery']
-    }).then(function(dbWishlist){
-   console.log(dbWishlist);
-   console.log("#######################" +dbWishlist.address); 
-})
+//   db.wishlist1.findAll({
+//     where:{ 
+//      userID: req.user.id }
+//     //attributes: ['address', 'userID', 'rbBrewid', 'url', 'brewery']
+//     }).then(function(dbWishlist){
+//    console.log(dbWishlist);
+//    console.log("#######################" +dbWishlist.address); 
+// })
   
-  })
+//   })
+// >>>>>>> master
 
   
 
@@ -86,10 +88,30 @@ module.exports = function (app, passport) {
 
   app.post("/api/wishlist", function (req, res) {
     req.body.userID = req.user.id;
-   // console.log(req.body);
 
     db.wishlist1.create(req.body);
   });
+
+function loop(data) {
+    for (var i = 0; i < data.length; i++ ) {
+      console.log(data[i].brewery);
+      console.log(data[i].url);
+      res.render('wishlist', {brewery: data[i].brewery});
+    }
+  }
+  app.get("/retrieveWishlist", function (req, res){
+
+    db.wishlist1.findAll({
+      where: {
+        userID: req.user.id,
+        visited: false
+      }
+    }).then(function(data){
+      loop(data);
+    });
+
+  });
+
 
 }
 

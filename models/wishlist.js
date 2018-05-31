@@ -23,6 +23,11 @@ module.exports = function(sequelize, Sequelize) {
         brewery: {
             type: Sequelize.STRING,
             allowNUll: false
+        },
+        visited: {
+            type: Sequelize.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         }
         
     });
