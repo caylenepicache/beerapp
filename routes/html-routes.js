@@ -67,20 +67,22 @@ module.exports = function (app, passport) {
 
 
   app.get("/wishlist", function (req, res) {
-    console.log(req.user);
+    
   });
 
-
   app.post("/api/wishlist", function (req, res) {
-    console.log(req.body[0]);
-
+    //console.log(req.user.id)
+    req.body.userID = req.user.id;
+    console.log(req.body);
 
     db.wishlist1.create(req.body
-      //address: req.body[1],
+      //req.body.address,
+      //req.body.userID
+      //address: req.body],
       //userID: req.user.id,
-      //rbBrewId: req.body[3],
-      //url: req.body[0],
-      //brewery: req.body[2]
+      //rbBrewId: req.body],
+      //url: req.body,
+      //brewery: req.body
 
 
     );
