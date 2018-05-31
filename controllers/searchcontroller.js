@@ -56,6 +56,7 @@ function beerSearchAPI(req, res){
             apiData = JSON.parse(body);
             console.log("apidata: " + apiData)
             console.log("NAME: " + apiData.data.beerSearch.items[0].name)
+            $(".random").append(apiData.data.beerSearch.items[0].name);
             //return apiData;
         }}).pipe(res)
     
