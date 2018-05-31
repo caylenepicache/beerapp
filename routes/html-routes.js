@@ -41,27 +41,52 @@ module.exports = function (app, passport) {
 
 
 
+
+  app.get("/wishlist", function (req, res) {
+      res.render('wishlist', {layout: 'main'}); 
+  });
+  
   app.get("/retrieveWishlist", function (req, res) {
-    var query = {};
-    if(req.user.id !== null){
+ /*var query = {};
+  if(req.user.id !== null){
     query.userID = req.user.id
     }
     db.wishlist1.findAll({
-      where: query
-    }).then(function(dbWishlist){
-      console.log(dbWishlist);
-      });
-
+      where: query,
+      attributes: [/*'address', 'userID', 'rbBrewid', 'url', 'brewery'],
     })
+   .then(function(dbWishlist){
+     console.log(dbWishlist);
+     
+      
+      })
+*/
+
+  db.wishlist1.findAll({
+    where:{ 
+     userID: req.user.id }
+    //attributes: ['address', 'userID', 'rbBrewid', 'url', 'brewery']
+    }).then(function(dbWishlist){
+   console.log(dbWishlist);
+   console.log("#######################" +dbWishlist.address); 
+})
+  
+  })
+
+  
+
+
+
+
+
   
     
-
 
   //Posting brewery data into the users wishlist
 
   app.post("/api/wishlist", function (req, res) {
     req.body.userID = req.user.id;
-    console.log(req.body);
+   // console.log(req.body);
 
     db.wishlist1.create(req.body);
   });
