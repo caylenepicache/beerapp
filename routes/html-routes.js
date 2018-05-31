@@ -42,7 +42,7 @@ module.exports = function (app, passport) {
 
 
   app.get("/wishlist", function (req, res) {
-    
+    res.render("/wishlist", {layout: "main"});
   });
 
   //Posting brewery data into the users wishlist
