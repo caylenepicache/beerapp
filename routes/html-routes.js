@@ -71,19 +71,19 @@ module.exports = function (app, passport) {
   });
 
 
-  app.post("/api/wishlist", function (req, res) {
-    console.log(req.body[0]);
+  app.post("/api/wishlist", function(req, res) {
+    console.log(JSON.stringify(req.body));
 
 
-    db.wishlist1.create(req.body
-      //address: req.body[1],
-      //userID: req.user.id,
-      //rbBrewId: req.body[3],
-      //url: req.body[0],
-      //brewery: req.body[2]
-
-
-    );
+    // db.wishlist1.create({
+    //   address: req.body.address, 
+    //   userID: req.user.id,
+    //   rbBrewId: req.body.rbBrewid,
+    //   url: req.body.url,
+    //   brewery:req.body.brewery
+    // }).then(function(data){
+    //   console.log(data);
+    // });
 
 
 
