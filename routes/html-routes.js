@@ -19,18 +19,18 @@ module.exports = function (app, passport) {
 
 
   //Renders the landing page
-  app.get("/", function(req, res) {
-      res.render('landing', {layout: 'access'});
+  app.get("/", function (req, res) {
+    res.render('landing', { layout: 'access' });
   });
 
-  
+
 
   app.get('/retrievedata', function (req, res) {
     db.Beer.findAll({
       include: [{
         model: db.user
       }]
-    }) 
+    })
       .then(function (Beer) {
         res.render('wishlist', { Beer: Beer })
       })
@@ -44,44 +44,44 @@ module.exports = function (app, passport) {
 
 
   app.get("/wishlist", function (req, res) {
-      res.render('wishlist', {layout: 'main'}); 
+    res.render('wishlist', { layout: 'main' });
   });
-  
-//   app.get("/retrieveWishlist", function (req, res) {
- /*var query = {};
-  if(req.user.id !== null){
-    query.userID = req.user.id
-    }
-    db.wishlist1.findAll({
-      where: query,
-      attributes: [/*'address', 'userID', 'rbBrewid', 'url', 'brewery'],
-    })
-   .then(function(dbWishlist){
-     console.log(dbWishlist);
-     
+
+  //   app.get("/retrieveWishlist", function (req, res) {
+  /*var query = {};
+   if(req.user.id !== null){
+     query.userID = req.user.id
+     }
+     db.wishlist1.findAll({
+       where: query,
+       attributes: [/*'address', 'userID', 'rbBrewid', 'url', 'brewery'],
+     })
+    .then(function(dbWishlist){
+      console.log(dbWishlist);
       
-      })
-*/
+       
+       })
+ */
 
-//   db.wishlist1.findAll({
-//     where:{ 
-//      userID: req.user.id }
-//     //attributes: ['address', 'userID', 'rbBrewid', 'url', 'brewery']
-//     }).then(function(dbWishlist){
-//    console.log(dbWishlist);
-//    console.log("#######################" +dbWishlist.address); 
-// })
-  
-//   })
-// >>>>>>> master
+  //   db.wishlist1.findAll({
+  //     where:{ 
+  //      userID: req.user.id }
+  //     //attributes: ['address', 'userID', 'rbBrewid', 'url', 'brewery']
+  //     }).then(function(dbWishlist){
+  //    console.log(dbWishlist);
+  //    console.log("#######################" +dbWishlist.address); 
+  // })
 
-  
-
+  //   })
+  // >>>>>>> master
 
 
 
-  
-    
+
+
+
+
+
 
   //Posting brewery data into the users wishlist
 
@@ -91,8 +91,8 @@ module.exports = function (app, passport) {
     db.wishlist1.create(req.body);
   });
 
-function loop(data) {
-    for (var i = 0; i < data.length; i++ ) {
+  function loop(data) {
+    for (var i = 0; i < data.length; i++) {
       // console.log(data[i].brewery);
       // console.log(data[i].url);
 
@@ -104,19 +104,19 @@ function loop(data) {
 
       // var object = JSON.parse(data[i].brewery);
       // console.log(object);
-      res.render("wishlist", {brewery: array});
-      
+      res.render("wishlist", { brewery: array });
+
     }
   }
 
-  app.get("/retrieve", function (req, res){
+  app.get("/retrieve", function (req, res) {
 
     db.wishlist1.findAll({
       where: {
         userID: req.user.id,
-        visited: false
+        //visited: false
       }
-    }).then(function(data){
+    }).then(function (data) {
       // loop(data);
       console.log(data[0].dataValues.brewery);
 
@@ -125,21 +125,20 @@ function loop(data) {
       });
     });
 
-  });   
+  });
 
-
+ 
 
   app.post("/api/update", function (req, res) {
-    db.wishlist1.update({visited: 1}, {
+    db.wishlist1.update({ visited: 1 }, {
       where: {
         userID: req.user.id,
         id: req.body.dataId
       }
- 
-
-});
-
-
+    })
   })
+    
+    
+ 
 
 }
