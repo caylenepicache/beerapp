@@ -17,38 +17,13 @@ module.exports = function (app, passport) {
 
   // index route loads landing page for signing up or signing in.
 
+
+  //Renders the landing page
   app.get("/", function(req, res) {
       res.render('landing', {layout: 'access'});
   });
 
-  //gets sign-up page 
-  //app.get("/signup", function(req, res) {
-    //res.render('signup', {layout: 'access'});
-  //});
-
-  //gets sign-in page
-  //app.get("/signin", function(req,res){
-    //res.render('signin', {layout: ''});
-  //})
-
-
-  app.use('/wishlist', function (req, res) {
-
-    db.Beer.create(
-      {
-        //console.log(req.user.id)
-        user: 'Sculpin',
-        beerType: 'IPA',
-        rating: '4',
-        wishList: '2',
-      },
-      db.user.addBeer(db.Beer, { through: { status: 'started' } })
-    )
-
-    //db.Beer.create(data);
-
-
-  })
+  
 
   app.get('/retrievedata', function (req, res) {
     db.Beer.findAll({
@@ -70,8 +45,9 @@ module.exports = function (app, passport) {
     
   });
 
+  //Posting brewery data into the users wishlist
+
   app.post("/api/wishlist", function (req, res) {
-    //console.log(req.user.id)
     req.body.userID = req.user.id;
     console.log(req.body);
 
@@ -90,15 +66,6 @@ module.exports = function (app, passport) {
 
 
   });
-
-  function ensureAuthenticated(req, res) {
-    if (req.isAuthenticated())
-      console.log("this is true");
-    else {
-      res.redirect('/signin')
-    }
-
-  }
 
 }
 
