@@ -1,7 +1,30 @@
-{{#if beer}}
-  {{#each beer}}
-    
-  {{/each}}
-{{else}}
-  <h3>No Beers.</h3>
-{{/if}}
+<section id="brewery-wishlist">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-6">
+        <h2>Try one of these!</h2>
+        {{#each brewery}}
+          {{#unless devoured}}
+          <p>
+            {{this.breweryName}}
+          </p>
+          <button id="change-state" data-id="{{id}}" data-state="{{tried}}"> Eat Me!</button>
+          {{/unless}}
+        {{/each}}
+      </div>
+
+      <div class="col-lg-6">
+        <h2>Previously Visited</h2>
+        {{#each brewery }}
+          {{#if tried}}
+          <p>
+            {{this.breweryName}}
+          </p>
+          {{/if}}
+        {{/each}}
+      </div>
+
+    </div>
+  </div>
+</section>
