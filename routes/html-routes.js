@@ -94,22 +94,23 @@ module.exports = function (app, passport) {
 
 function loop(data) {
     for (var i = 0; i < data.length; i++ ) {
-      console.log(data[i].brewery);
-      console.log(data[i].url);
+      // console.log(data[i].brewery);
+      // console.log(data[i].url);
 
-      var array = {}
+      var array = [];
+
       array.push(data[i].brewery);
       array.push(data[i].url);
       console.log(array);
 
       // var object = JSON.parse(data[i].brewery);
       // console.log(object);
-      res.render('wishlist', {brewery: array});
-      console.log(res);
+      res.render("wishlist", {brewery: array});
+      
     }
   }
 
-  app.get("/wishlist", function (req, res){
+  app.get("/retrieve", function (req, res){
 
     db.wishlist1.findAll({
       where: {
@@ -117,10 +118,15 @@ function loop(data) {
         visited: false
       }
     }).then(function(data){
-      loop(data);
+      // loop(data);
+      console.log(data[0].dataValues.brewery);
+
+      res.render("wishlist", {
+        brewery: data
+      });
     });
 
-  });
+  });   
 
 
 }
