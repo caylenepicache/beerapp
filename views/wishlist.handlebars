@@ -35,13 +35,14 @@
               <th scope="col">Cheers!</th>
             </tr>
           </thead>
-        {{#each brewery}} 
-          {{#unless visited}}
+        {{#each brewery}} {{#unless visited}}
           <tbody>
             <tr>
               <td>{{this.brewery}}</td>
               <!--<td>{{this.url}}</td>-->
-              <td> <button onclick="breweriesVisited({{id}})" id="change-state" data-id="{{id}}" data-state="{{tried}}"><img src="assets/img/cheers.png" class="img-fluid"></button></td>
+  
+              <td> <button id="change-state" onclick="breweriesVisited({{id}})" data-id="{{id}}" data-state="{{visited}}"><img src="assets/img/cheers.png" class="img-fluid"></button></td>
+
             </tr>
           </tbody>
          {{/unless}} 
@@ -50,23 +51,27 @@
       </div>
 
       <div class="col-lg-6">
-        <table class="table">
+
+        <h2>Your List of Good Times.</h2>
+         <table class="table">
           <thead>
             <tr>
               <th scope="col">Brewery</th>
+              
             </tr>
           </thead>
-        <h2>Your List of Good Times.</h2>
-        {{#each brewery }} 
-          {{#if visited}}
+        {{#each brewery }} {{#if visited}}
+       
           <tbody>
             <tr>
               <td>{{this.brewery}}</td>
+              
             </tr>
           </tbody>
-          {{/if}} 
-        {{/each}}
-         </table>
+        
+        {{/if}} {{/each}}
+      </table>
+
       </div>
 
     </div>
