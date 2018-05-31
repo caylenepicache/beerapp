@@ -30,7 +30,7 @@ module.exports = function (app, passport) {
       include: [{
         model: db.user
       }]
-    })
+    }) 
       .then(function (Beer) {
         res.render('wishlist', { Beer: Beer })
       })
@@ -41,9 +41,25 @@ module.exports = function (app, passport) {
 
 
 
+
   app.get("/wishlist", function (req, res) {
       res.render('wishlist', {layout: 'main'}); 
   });
+  
+  app.get("/retrieveWishlist", function (req, res) {
+    var query = {};
+    if(req.user.id !== null){
+    query.userID = req.user.id
+    }
+    db.wishlist1.findAll({
+      where: query
+    }).then(function(dbWishlist){
+      console.log(dbWishlist);
+      });
+
+    })
+  
+    
 
   //Posting brewery data into the users wishlist
 
@@ -51,20 +67,7 @@ module.exports = function (app, passport) {
     req.body.userID = req.user.id;
     console.log(req.body);
 
-    db.wishlist1.create(req.body
-      //req.body.address,
-      //req.body.userID
-      //address: req.body],
-      //userID: req.user.id,
-      //rbBrewId: req.body],
-      //url: req.body,
-      //brewery: req.body
-
-
-    );
-
-
-
+    db.wishlist1.create(req.body);
   });
 
 }
