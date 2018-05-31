@@ -40,7 +40,7 @@
             <tr>
               <td>{{this.brewery}}</td>
               <!--<td>{{this.url}}</td>-->
-              <td> <button id="change-state" data-id="{{id}}" data-state="{{tried}}">Tried it!</button></td>
+              <td> <button onclick="breweriesVisited({{id}})"  id="change-state" data-id="{{id}}" data-state="{{tried}}">Tried it!</button></td>
             </tr>
           </tbody>
         {{/unless}} {{/each}}

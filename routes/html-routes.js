@@ -80,7 +80,6 @@ module.exports = function (app, passport) {
 
 
 
-
   
     
 
@@ -129,10 +128,18 @@ function loop(data) {
   });   
 
 
+
+  app.post("/api/update", function (req, res) {
+    db.wishlist1.update({visited: 1}, {
+      where: {
+        userID: req.user.id,
+        id: req.body.dataId
+      }
+ 
+
+});
+
+
+  })
+
 }
-
-
-
-
-
-

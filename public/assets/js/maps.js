@@ -111,9 +111,28 @@ function wishlist() {
     $.post("/api/wishlist", data).then(console.log(data));
   }
   userWishlistPost(data);
+}
+  //
 
 
 
+  function breweriesVisited(id) {
+    
+   // var dataId = $("#change-state").attr("data-id");
+    var data = {
+      dataId : id
+    }
+  
+  
+    
 
-};
+    function breweriesVisitedPost(data){
+      $.post("/api/update", data).then(console.log(data));
+    }
+   
+    breweriesVisitedPost(data); 
+  }
+
+
+
 
