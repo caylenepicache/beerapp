@@ -96,10 +96,12 @@ function loop(data) {
     for (var i = 0; i < data.length; i++ ) {
       console.log(data[i].brewery);
       console.log(data[i].url);
-      res.render('wishlist', {brewery: data[i].brewery});
+      var object = JSON.stringify(data[i].brewery);
+      console.log(object);
+      res.render('wishlist', {brewery: object});
     }
   }
-  app.get("/retrieveWishlist", function (req, res){
+  app.get("/retrieve", function (req, res){
 
     db.wishlist1.findAll({
       where: {
