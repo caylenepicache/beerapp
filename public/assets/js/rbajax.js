@@ -55,17 +55,40 @@ function apiSearchAjax() {
     $.post('http://localhost:8080/search',ajaxData,function(data){
         console.log("data before stringify:" + data)
     }).then(function(response) {
+        var BeerSearch = response.data.beerSearch;
+        var BrewSearch = response.data.beersByBrewer
+
         fromSearchJSON = JSON.stringify(response);
         console.log('success: '+ fromSearchJSON);
         //console.log(response.data.beersearch);
 
-
+//------------------USES BREW SEARCH-------------------
         if (radioChecker === 0){
             console.log("front end from brew name:" + response.data.beersByBrewer.items[0].name)
-        }
+
+            $(".container-wishlist").append("<thead><tr><th> Beer Image</th><th> Beer Name</th><th>Beer Style</th><th> Rate Beer Rating</th><th> Description</th></tr></thead>")
+
+        for (i = 0; i < 10; i++) {
+            $(".container-wishlist").append("<tr><td><img src=" + BrewSearch.items[i].imageUrl + "></td><td>" + 
+            BrewSearch.items[i].name + "</td><td>" + 
+            BrewSearch.items[i].style.name + "</td><td>" + 
+            Math.round(BrewSearch.items[i].averageRating * 100)/100 + "</td><td>" + 
+            BrewSearch.items[i].description +  "</td><td></tr>");
+        }}
+//-----------USES BEER SEARCH--------------------------------------------------------
         else{
         console.log("front end beer name: " + response.data.beerSearch.items[0].name)
-        }
+        console.log("front end beer style name: " + response.data.beerSearch.items[0].style.name)
+        
+        $(".container-wishlist").append("<thead><tr><th> Beer Image</th><th> Beer Name</th><th>Beer Style</th><th> Rate Beer Rating</th><th> Description</th></tr></thead>")
+
+        for (i = 0; i < 10; i++) {
+            $(".container-wishlist").append("<tr><td><img src=" + BeerSearch.items[i].imageUrl + "></td><td>" + 
+            BeerSearch.items[i].name + "</td><td>" + 
+            BeerSearch.items[i].style.name + "</td><td>" + 
+            Math.round(BeerSearch.items[i].averageRating * 100)/100 + "</td><td>" + 
+            BeerSearch.items[i].description +  "</td></tr>");
+        }}
 
 
     })
@@ -77,9 +100,11 @@ function apiSearchAjax() {
 
 /* -----------------CONNECT TO SEARCH BAR ------------------- */
 $("#search-submit").click(function(event) {
+    $(".container-wishlist").empty();
         //if (event.which == 13) {
             apiSearchAjax();
             $("#search-bar").val("");
+
         //}
 }); 
 
