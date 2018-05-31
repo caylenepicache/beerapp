@@ -21,7 +21,7 @@ body {
     color: black;
   }
 
-  #wishlist-button {
+  .wishlist-button {
       display: block; 
       margin-top: 10px;
   }
@@ -259,6 +259,10 @@ th {
 #brewery-wishlist button img {
     width: 15%;
     height: auto; 
+}
+
+button:focus{
+    outline: none;
 }
 
 .table thead th {
