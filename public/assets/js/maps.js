@@ -1,6 +1,7 @@
 
 
 document.addEventListener('DOMContentLoaded', function () {
+  
   if (document.querySelectorAll('#map').length > 0)
   {
     if (document.querySelector('html').lang)
@@ -74,6 +75,7 @@ function plotMarkers(breweriesObj){
 
 
 function wishlist() {
+  
   var wishItems = []
 
   var url = $(".wishlist-button").attr("data-url");
@@ -91,7 +93,7 @@ function wishlist() {
   var data = {
     address: address, 
     userID: 'userID', 
-    rbBrewid: brewID,
+    rbBrewId: brewID,
     url: url, 
     brewery: name
   }

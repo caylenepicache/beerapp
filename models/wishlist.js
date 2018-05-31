@@ -13,7 +13,7 @@ module.exports = function(sequelize, Sequelize) {
             allowNull: false
         },
         rbBrewId: {
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
             allowNUll: true
         },
         url: {

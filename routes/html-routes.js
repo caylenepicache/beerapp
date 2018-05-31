@@ -84,20 +84,7 @@ module.exports = function (app, passport) {
     req.body.userID = req.user.id;
    // console.log(req.body);
 
-    db.wishlist1.create(req.body
-      //req.body.address,
-      //req.body.userID
-      //address: req.body],
-      //userID: req.user.id,
-      //rbBrewId: req.body],
-      //url: req.body,
-      //brewery: req.body
-
-
-    );
-
-
-
+    db.wishlist1.create(req.body);
   });
 
 }
