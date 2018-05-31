@@ -96,12 +96,20 @@ function loop(data) {
     for (var i = 0; i < data.length; i++ ) {
       console.log(data[i].brewery);
       console.log(data[i].url);
-      var object = JSON.stringify(data[i].brewery);
-      console.log(object);
-      res.render('wishlist', {brewery: object});
+
+      var array = {}
+      array.push(data[i].brewery);
+      array.push(data[i].url);
+      console.log(array);
+
+      // var object = JSON.parse(data[i].brewery);
+      // console.log(object);
+      res.render('wishlist', {brewery: array});
+      console.log(res);
     }
   }
-  app.get("/retrieve", function (req, res){
+
+  app.get("/wishlist", function (req, res){
 
     db.wishlist1.findAll({
       where: {
