@@ -2,7 +2,7 @@
 //-------------------GLOBAL VARIABLES----------------------
 
 var button1 = document.getElementById("radios1");
-var button2 = document.getElementById("radios2");
+var button2 = document.getElementById("radios2").addEventListener("click", onClickTypeAhead)
 
 
 
@@ -10,7 +10,29 @@ var button2 = document.getElementById("radios2");
 //var keys = require('./keys');
 //var ratebeerkey = keys.ratebeer.id;
 //console.log("ratebeer: " + ratebeerkey)
+function onClickTypeAhead() {
 
+    var dataSource = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('brewery'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch: {
+            url: "https://raw.githubusercontent.com/caylenepicache/beerapp/master/public/assets/json/breweries.json"
+        }
+    });
+    
+    
+    dataSource.initialize();
+    
+    $('.typeahead').typeahead({
+        highlight: true
+    }, {
+        displayKey: 'brewery',
+        source: dataSource
+    });
+    
+        
+        
+    };
 
 //-----------------SEARCH FOR SPECIFIC BEERS------------------
 function apiSearchAjax() {
@@ -21,6 +43,7 @@ function apiSearchAjax() {
     if (button1.checked){
         radioChecker = 1;
     }
+
 
 
     var ajaxData = {
@@ -48,7 +71,7 @@ function apiSearchAjax() {
       
  }; 
 
- 
+ /*
 //----------------------------SEARCH FOR SPECIFIC BREWERIES-------------------
 function brewerySearchAjax() {
     $.ajax({
@@ -75,14 +98,12 @@ function brewerySearchAjax() {
     // Log the resulting object
     console.log(response);
     console.log(response.data.beersByBrewer.items[0].id);
-    
-
-
 
     
     });
 };
 
+*/
 
 
 //function stringToId {
@@ -95,8 +116,8 @@ function brewerySearchAjax() {
 $(".input").keypress(function(event) {
         if (event.which == 13) {
             apiSearchAjax();
+            $("#search-bar").val("");
         }
-
 }); 
 
 
