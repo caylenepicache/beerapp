@@ -30,7 +30,7 @@ module.exports = function (app, passport) {
       include: [{
         model: db.user
       }]
-    })
+    }) 
       .then(function (Beer) {
         res.render('wishlist', { Beer: Beer })
       })
@@ -41,9 +41,21 @@ module.exports = function (app, passport) {
 
 
 
-  app.get("/wishlist", function (req, res) {
+  app.get("/retrieveWishlist", function (req, res) {
+    var query = {};
+    if(req.user.id !== null){
+    query.userID = req.user.id
+    }
+    db.wishlist1.findAll({
+      where: query
+    }).then(function(dbWishlist){
+      console.log(dbWishlist);
+      });
+
+    })
+  
     
-  });
+
 
   //Posting brewery data into the users wishlist
 
