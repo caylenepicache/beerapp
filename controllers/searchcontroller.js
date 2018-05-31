@@ -59,6 +59,7 @@ function beerSearchAPI(req, res){
             $(".random").append(apiData.data.beerSearch.items[0].name);
             //return apiData;
         }}).pipe(res)
+    
         //console.log("apiData: "+ apiData);
         //return apiData;
     };
