@@ -95,7 +95,7 @@ function wishlist() {
     userID: 'userID', 
     rbBrewId: brewID,
     url: url, 
-    brewery: name
+    brewery: name,
   }
 
   
