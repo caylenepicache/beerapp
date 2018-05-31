@@ -20,6 +20,11 @@ module.exports = function (sequelize, Sequelize) {
 
         userID: {
             type: Sequelize.INTEGER,
+        },
+        visited: {
+            type: Sequelize.BOOLEAN,
+            allowNull: false,
+            defaultValue: false 
         }
 
     });

@@ -37,7 +37,6 @@
 
       <div class="col-lg-6">
         <h2>Try one of these Breweries!</h2>
-        {{#each brewery}} {{#unless tried}}
         <table class="table">
           <thead>
             <tr>
@@ -45,15 +44,16 @@
               <th scope="col">Url</th>
             </tr>
           </thead>
+        {{#each brewery}} {{#unless tried}}
           <tbody>
             <tr>
               <td>{{this.brewery}}</td>
-              <td>{{this.url}}</td>
+              <!--<td>{{this.url}}</td>-->
               <td> <button id="change-state" data-id="{{id}}" data-state="{{tried}}">Tried it!</button></td>
             </tr>
           </tbody>
-        </table>
         {{/unless}} {{/each}}
+         </table>
       </div>
 
       <div class="col-lg-6">
