@@ -52,7 +52,7 @@ function apiSearchAjax() {
         "searchQuery": search
     }
 
-    $.post("https://cors-anywhere.herokuapp.com/search",ajaxData,function(data){
+    $.post("https://glacial-cove-37095.herokuapp.com/search/",ajaxData,function(data){
         console.log("data before stringify:" + data)
     }).then(function(response) {
         var BeerSearch = response.data.beerSearch;
