@@ -52,7 +52,7 @@ function apiSearchAjax() {
         "searchQuery": search
     }
 
-    $.post('herokuwhatevername.heroku.com/search',ajaxData,function(data){
+    $.post('/search',ajaxData,function(data){
         console.log("data before stringify:" + data)
     }).then(function(response) {
         var BeerSearch = response.data.beerSearch;
