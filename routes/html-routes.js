@@ -41,6 +41,11 @@ module.exports = function (app, passport) {
 
 
 
+
+  app.get("/wishlist", function (req, res) {
+      res.render('wishlist', {layout: 'main'}); 
+  });
+  
   app.get("/retrieveWishlist", function (req, res) {
  /*var query = {};
   if(req.user.id !== null){
@@ -76,7 +81,6 @@ module.exports = function (app, passport) {
 
   
     
-
 
   //Posting brewery data into the users wishlist
 

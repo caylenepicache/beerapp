@@ -1,28 +1,79 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <div class="container">
+    <a href="index.html" class="navbar-brand">beerMappSD</a>
+    <button class="navbar-toggler" data-toggle="collapse" data target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <!--Branding Area-->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="#home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#explore-head-section" class="nav-link">mapSD</a>
+        </li>
+        <li class="nav-item">
+          <a href="#create-head-section" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="#share-head-section" class="nav-link">San Diego</a>
+        </li>
+        <li class="nav-item">
+          <a href="/signout" class="nav-link">Sign Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+
+
 <section id="brewery-wishlist">
   <div class="container">
     <div class="row">
 
       <div class="col-lg-6">
-        <h2>Try one of these!</h2>
-        {{#each brewery}}
-          {{#unless devoured}}
-          <p>
-            {{this.breweryName}}
-          </p>
-          <button id="change-state" data-id="{{id}}" data-state="{{tried}}"> Eat Me!</button>
-          {{/unless}}
-        {{/each}}
+        <h2>Try one of these Breweries!</h2>
+        {{#each brewery}} {{#unless tried}}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Brewery</th>
+              <th scope="col">Url</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{this.breweryName}}</td>
+              <td>{{this.url}}</td>
+              <td> <button id="change-state" data-id="{{id}}" data-state="{{tried}}">Tried it!</button></td>
+            </tr>
+          </tbody>
+        </table>
+        {{/unless}} {{/each}}
       </div>
 
       <div class="col-lg-6">
-        <h2>Previously Visited</h2>
-        {{#each brewery }}
-          {{#if tried}}
-          <p>
-            {{this.breweryName}}
-          </p>
-          {{/if}}
-        {{/each}}
+        <h2>Breweries you have tried.</h2>
+        {{#each brewery }} {{#if tried}}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Brewery</th>
+              <th scope="col">Url</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{this.breweryName}}</td>
+              <td>{{this.url}}</td>
+            </tr>
+          </tbody>
+        </table>
+        {{/if}} {{/each}}
       </div>
 
     </div>
