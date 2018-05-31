@@ -48,6 +48,7 @@ module.exports = function (app, passport) {
   //Posting brewery data into the users wishlist
 
   app.post("/api/wishlist", function (req, res) {
+    req.body.rbBrewid = parseInt(req.body.rbBrewid);
     req.body.userID = req.user.id;
     console.log(req.body);
 

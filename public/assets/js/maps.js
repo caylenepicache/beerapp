@@ -93,7 +93,7 @@ function wishlist() {
   var data = {
     address: address, 
     userID: 'userID', 
-    rbBrewid: brewID,
+    rbBrewId: brewID,
     url: url, 
     brewery: name
   }
