@@ -42,13 +42,16 @@
               <!--<td>{{this.url}}</td>-->
   
               <td> <button id="change-state" onclick="breweriesVisited({{id}})" data-id="{{id}}" data-state="{{visited}}"><img src="assets/img/cheers.png" class="img-fluid"></button></td>
+
             </tr>
           </tbody>
-        {{/unless}} {{/each}}
+         {{/unless}} 
+        {{/each}}
          </table>
       </div>
 
       <div class="col-lg-6">
+
         <h2>Your List of Good Times.</h2>
          <table class="table">
           <thead>
@@ -68,6 +71,7 @@
         
         {{/if}} {{/each}}
       </table>
+
       </div>
 
     </div>
