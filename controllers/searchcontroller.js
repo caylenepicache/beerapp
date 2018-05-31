@@ -48,7 +48,7 @@ function beerSearchAPI(req, res){
             'accept': "application/json"
         },
         url: 'https://api.r8.beer/v1/api/graphql/',
-        body: '{"query":"query {beerSearch(query: \\"' + req.body.searchQuery + '\\", first: 10) {items {id name description averageRating ratingCount imageUrl brewer {id}}}}", "variables":"{}", "operationName":null}'
+        body: '{"query":"query {beerSearch(query: \\"' + req.body.searchQuery + '\\", first: 10) {items {id name description averageRating ratingCount imageUrl style {name} brewer {id}}}}", "variables":"{}", "operationName":null}'
       },function (error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log(body);
