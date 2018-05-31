@@ -30,7 +30,7 @@ module.exports = function (app, passport) {
       include: [{
         model: db.user
       }]
-    })
+    }) 
       .then(function (Beer) {
         res.render('wishlist', { Beer: Beer })
       })
@@ -41,18 +41,43 @@ module.exports = function (app, passport) {
 
 
 
-  app.get("/wishlist", function (req, res) {
-    res.render("/wishlist", {layout: "main"});
-  });
+  // app.get("/wishlist", function (req, res) {
+  //   res.render("/wishlist", {layout: "main"});
+  // });
+
+  
+    
+
 
   //Posting brewery data into the users wishlist
 
   app.post("/api/wishlist", function (req, res) {
     req.body.userID = req.user.id;
-    console.log(req.body);
+    // console.log(req.body);
 
     db.wishlist1.create(req.body);
   });
+
+function loop(data) {
+    for (var i = 0; i < data.length; i++ ) {
+      console.log(data[i].brewery);
+      console.log(data[i].url);
+      res.render('wishlist', {brewery: data[i].brewery});
+    }
+  }
+  app.get("/retrieveWishlist", function (req, res){
+
+    db.wishlist1.findAll({
+      where: {
+        userID: req.user.id,
+        visited: false
+      }
+    }).then(function(data){
+      loop(data);
+    });
+
+  });
+
 
 }
 
