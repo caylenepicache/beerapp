@@ -261,8 +261,13 @@ th {
     height: auto; 
 }
 
+<<<<<<< HEAD
 button:focus{
     outline: none;
+=======
+button:focus {
+    outline: none; 
+>>>>>>> 9952c83700857c26ebc22882f1c773548b143321
 }
 
 .table thead th {
