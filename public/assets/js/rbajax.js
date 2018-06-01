@@ -72,7 +72,7 @@ function apiSearchAjax() {
                 $(".container-wishlist").append("<tr><td><img src=" + BrewSearch.items[i].imageUrl + "></td><td>" +
                     BrewSearch.items[i].name + "</td><td>" +
                     BrewSearch.items[i].style.name + "</td><td>" +
-                    Math.round(BrewSearch.items[i].averageRating * 100) / 100 + "</td><td>" +
+                    Math.round(BrewSearch.items[i].averageRating * 100) / 100 + "/5</td><td>" +
                     BrewSearch.items[i].description + "</td><td></tr>");
             }
         }
@@ -87,7 +87,7 @@ function apiSearchAjax() {
                 $(".container-wishlist").append("<tr><td><img src=" + BeerSearch.items[i].imageUrl + "></td><td>" +
                     BeerSearch.items[i].name + "</td><td>" +
                     BeerSearch.items[i].style.name + "</td><td>" +
-                    Math.round(BeerSearch.items[i].averageRating * 100) / 100 + "</td><td>" +
+                    Math.round(BeerSearch.items[i].averageRating * 100) / 100 + "/5</td><td>" +
                     BeerSearch.items[i].description + "</td></tr>");
             }
         }
