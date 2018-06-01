@@ -52,10 +52,8 @@ function apiSearchAjax() {
         "searchQuery": search
     }
 
-    $.post({
-        url: "https://glacial-cove-37095.herokuapp.com/search", ajaxData, function(data) {
+    $.post("https://glacial-cove-37095.herokuapp.com/search/", ajaxData, function(data) {
             console.log("data before stringify:" + data)
-        }
     }).then(function (response) {
         var BeerSearch = response.data.beerSearch;
         var BrewSearch = response.data.beersByBrewer
