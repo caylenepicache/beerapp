@@ -54,7 +54,7 @@ function apiSearchAjax() {
 
     $.post({
         headers: {
-            'content-type': "application/x-www-form-urlencoded"
+            'content-type': "application/x-www-form-urlencoded; charset=UTF-8"
             //'accept': "application/javascript"
         },
         url: "https://glacial-cove-37095.herokuapp.com/search", ajaxData, function(data) {
